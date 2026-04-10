@@ -22,6 +22,24 @@ This project is an educational game application built with Angular called "Drago
 - Prefer type inference when the type is obvious
 - Avoid the `any` type; use `unknown` when type is uncertain
 
+## Styling with Tailwind CSS
+
+This project uses Tailwind CSS for styling. The application has a custom color palette defined in `src/styles.css`:
+
+| Color          | CSS Variable             | Tailwind Class                                                      | Hex       |
+| -------------- | ------------------------ | ------------------------------------------------------------------- | --------- |
+| Deep Purple    | `--color-deep-purple`    | `bg-deep-purple`, `text-deep-purple`, `border-deep-purple`          | `#6e026f` |
+| Soft Teal      | `--color-soft-teal`      | `bg-soft-teal`, `text-soft-teal`, `border-soft-teal`                | `#abdadc` |
+| Warm Cream     | `--color-warm-cream`     | `bg-warm-cream`, `text-warm-cream`, `border-warm-cream`             | `#f1e6c9` |
+| Vibrant Orange | `--color-vibrant-orange` | `bg-vibrant-orange`, `text-vibrant-orange`, `border-vibrant-orange` | `#fa891a` |
+
+### Usage Guidelines
+
+- **Always use the application palette** for UI components to maintain visual consistency
+- Use opacity modifiers for variations: `bg-deep-purple/50`, `text-vibrant-orange/80`
+- Combine with standard Tailwind utilities: `bg-warm-cream/95 shadow-lg shadow-deep-purple/10`
+- The palette supports child-friendly UI with warm, playful colors
+
 ## Angular Best Practices
 
 - Always use standalone components over NgModules
