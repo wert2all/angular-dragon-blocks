@@ -4,6 +4,9 @@ import tsParser from '@typescript-eslint/parser';
 
 export default [
   {
+    ignores: ['.angular/**', 'dist/**', 'node_modules/**', 'coverage/**'],
+  },
+  {
     files: ['src/**/*.ts'],
     ignores: ['src/**/*.spec.ts'],
     languageOptions: {
@@ -51,6 +54,7 @@ export default [
   },
   {
     files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
+    ignores: ['commitlint.config.js', 'eslint.config.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
