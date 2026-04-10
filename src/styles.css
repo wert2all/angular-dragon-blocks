@@ -1,3 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+:root {
+  /* Color Palette - Dragon Blocks */
+  --color-deep-purple: #6e026f;
+  --color-soft-teal: #abdadc;
+  --color-warm-cream: #f1e6c9;
+  --color-vibrant-orange: #fa891a;
+}
+
+@theme {
+  --color-deep-purple: var(--color-deep-purple);
+  --color-soft-teal: var(--color-soft-teal);
+  --color-warm-cream: var(--color-warm-cream);
+  --color-vibrant-orange: var(--color-vibrant-orange);
+}
