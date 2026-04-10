@@ -1,0 +1,13 @@
+<a
+  role="button"
+  tabindex="0"
+  (click)="toggleVolume()"
+  (keydown.enter)="toggleVolume()"
+  (keydown.space)="$event.preventDefault(); toggleVolume()"
+  [attr.aria-label]="isVolumeOn() ? 'Turn off sound' : 'Turn on sound'"
+  class="block cursor-pointer rounded-xl bg-warm-cream/95 p-2 ring-2 ring-vibrant-orange transition-transform duration-300 hover:scale-105 sm:p-3">
+  <ng-icon
+    [name]="isVolumeOn() ? 'hugeVolumeHigh' : 'hugeVolumeMute02'"
+    class="text-xl text-deep-purple sm:text-2xl"
+    size="1.5em" />
+</a>
