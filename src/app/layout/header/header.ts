@@ -1,19 +1,29 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
-import { NgIcon } from '@ng-icons/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+} from "@angular/core";
+import { NgOptimizedImage } from "@angular/common";
+import { VolumeToggler } from "../../features/voice/share/volume-toggler/volume-toggler";
+import { AppActions } from "../../store/app.actions";
+import { Store } from "@ngrx/store";
+import { appFeature } from "../../store/app.feature";
 
 @Component({
-  selector: 'app-header',
+  selector: "app-header",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgOptimizedImage, NgIcon],
+  imports: [NgOptimizedImage, VolumeToggler],
   host: {
-    class: 'contents',
+    class: "contents",
   },
-  templateUrl: './header.html',
+  templateUrl: "./header.html",
 })
 export class Header {
-  isVolumeOn = signal(true);
+  private store = inject(Store);
+
+  protected isVolumeOn = this.store.selectSignal(appFeature.isVolumeOn);
+
   toggleVolume(): void {
-    this.isVolumeOn.update((on) => !on);
+    this.store.dispatch(AppActions.toggleSound());
   }
 }
