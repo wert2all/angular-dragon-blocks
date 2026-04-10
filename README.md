@@ -1,6 +1,6 @@
 # Dragon Blocks: Reading Adventures
 
-![Dragon Blocks Logo](./assets/logo.png)
+![Dragon Blocks Logo](./public/dragon-blocks-logo.svg)
 
 ## Overview
 
