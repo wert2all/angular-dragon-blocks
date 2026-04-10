@@ -19,7 +19,7 @@ import { NgOptimizedImage } from '@angular/common';
           class="h-12 w-auto object-contain"
         />
         <div class="hidden h-8 w-px bg-vibrant-orange/40 sm:block"></div>
-        <span class="hidden text-lg font-bold tracking-tight text-deep-purple sm:block"
+        <span class="hidden text-lg font-bold tracking-tight text-deep-purple sm:block font-fancy"
           >Dragon Blocks: Reading Adventures</span
         >
       </div>
