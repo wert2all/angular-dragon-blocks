@@ -1,5 +1,20 @@
+## Project Overview
 
-You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+This project is an educational game application built with Angular called "Dragon Blocks: Reading Adventures". The application helps children learn to read by manipulating syllable blocks to build objects for the dragon character Toothless. The game features progressive difficulty levels and a syllable-based building mechanic.
+
+## Setup Commands
+
+- Install dependencies: `pnpm install`
+- Install Angular CLI globally: `pnpm install -g @angular/cli`
+- Start development server: `pnpm ng serve`
+- Build for production: `pnpm ng build`
+
+## Development Workflow
+
+- Use `ng generate` to create new components, services, and modules
+- Run tests using `ng test`
+- Use `ng lint` for code quality checks
+- Follow Angular's component-based architecture patterns
 
 ## TypeScript Best Practices
 
@@ -53,3 +68,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## License
+
+This project is licensed under the **GNU General Public License v3.0** (GPL‑3.0). See [LICENCE.md](./LICENCE.md) for details.
