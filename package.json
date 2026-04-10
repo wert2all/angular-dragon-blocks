@@ -10,6 +10,9 @@
     "test": "ng test",
     "commit": "commitlint --edit",
     "commitlint": "commitlint",
+    "format": "pnpm format:prettier && pnpm format:biome",
+    "format:biome": "biome format --write",
+    "format:prettier": "prettier ./ --write",
     "lint:format": "npx prettier --check .",
     "lint:eslint": "npx eslint .",
     "lint": "pnpm lint:format && pnpm lint:eslint"
