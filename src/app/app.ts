@@ -2,11 +2,13 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CenterLayout } from './layout/center-layout';
 import { GameContent } from './layout/game-content';
+import { Header } from './layout/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CenterLayout, GameContent],
+  imports: [RouterOutlet, CenterLayout, GameContent, Header],
   template: `
+    <app-header />
     <app-center-layout>
       <app-game-content>
         <router-outlet />
