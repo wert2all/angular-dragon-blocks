@@ -1,0 +1,391 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Syllable Master - City View</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be_Vietnam_Pro:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'surface-container': '#fff9e0',
+              surface: '#fffdf5',
+              'on-background': '#241e00',
+              'inverse-on-surface': '#fffbe6',
+              'surface-container-low': '#fffbea',
+              'on-tertiary-container': '#241e00',
+              'surface-container-high': '#fff5cc',
+              'on-tertiary-fixed': '#241e00',
+              'inverse-surface': '#353018',
+              background: '#fffdf5',
+              'outline-variant': '#d9c572',
+              'on-tertiary': '#ffffff',
+              'secondary-fixed-dim': '#f1e18d',
+              'secondary-fixed': '#fff2b3',
+              'tertiary-container': '#ffef9c',
+              'primary-fixed-dim': '#f0c300',
+              'primary-fixed': '#ffdf61',
+              'on-secondary': '#3a3000',
+              'on-secondary-fixed': '#241e00',
+              'on-secondary-container': '#241e00',
+              outline: '#8a771e',
+              primary: '#FFCF00',
+              'on-error': '#ffffff',
+              'on-primary': '#241e00',
+              'error-container': '#ffdad6',
+              'surface-tint': '#FFCF00',
+              'surface-container-highest': '#ffefa3',
+              'surface-dim': '#e2dca7',
+              'tertiary-fixed-dim': '#f0c300',
+              'on-primary-fixed': '#241e00',
+              'on-primary-container': '#241e00',
+              'on-surface': '#241e00',
+              'surface-container-lowest': '#ffffff',
+              'on-secondary-fixed-variant': '#544600',
+              secondary: '#6d5e00',
+              'on-primary-fixed-variant': '#715c00',
+              tertiary: '#715c00',
+              'surface-variant': '#f0e2a3',
+              'on-surface-variant': '#4d472a',
+              'secondary-container': '#ffef9c',
+              'tertiary-fixed': '#ffdf61',
+              'surface-bright': '#fffdf5',
+              'inverse-primary': '#f0c300',
+              error: '#ba1a1a',
+              'primary-container': '#ffdf61',
+              'on-error-container': '#93000a',
+            },
+            borderRadius: {
+              DEFAULT: '9999px',
+              lg: '9999px',
+              xl: '9999px',
+              full: '9999px',
+            },
+            fontFamily: {
+              headline: ['Plus Jakarta Sans'],
+              body: ['Plus Jakarta Sans'],
+              label: ['Plus Jakarta Sans'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+      .isometric-grid {
+        background-image: radial-gradient(circle, #ffefa3 1.5px, transparent 1.5px);
+        background-size: 40px 40px;
+      }
+      .lego-shadow {
+        filter: drop-shadow(0 12px 0px rgba(0, 0, 0, 0.1));
+      }
+    </style>
+  </head>
+  <body class="bg-surface font-body text-on-surface min-h-screen overflow-hidden select-none">
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 left-0 w-full px-6 pt-4 z-50 flex justify-between items-center max-w-7xl mx-auto bg-transparent no-border gap-4"
+    >
+      <div class="flex items-center gap-3">
+        <h1 class="font-headline font-black text-2xl tracking-tight text-primary">
+          Syllable Master
+        </h1>
+      </div>
+      <!-- Currency HUD -->
+      <div class="flex gap-4">
+        <div
+          class="bg-white px-4 py-2 rounded-full flex items-center gap-2 shadow-[0_4px_0_#e2dca7] border border-surface-container-highest"
+        >
+          <span
+            class="material-symbols-outlined text-primary"
+            style="font-variation-settings: 'FILL' 1"
+            >star</span
+          >
+          <span class="font-headline font-bold text-on-surface">1,240</span>
+        </div>
+        <div class="flex gap-2">
+          <button
+            class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-on-surface shadow-[0_4px_0_#e2dca7] hover:scale-105 transition-transform active:translate-y-1 active:shadow-none border border-surface-container-highest"
+          >
+            <span class="material-symbols-outlined" data-icon="volume_up">volume_up</span>
+          </button>
+          <button
+            class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-on-surface shadow-[0_4px_0_#e2dca7] hover:scale-105 transition-transform active:translate-y-1 active:shadow-none border border-surface-container-highest"
+          >
+            <span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- SideNavBar (Dragon HUD) -->
+    <nav
+      class="fixed left-0 top-1/2 -translate-y-1/2 w-20 flex flex-col items-center py-8 z-40 bg-on-background/90 backdrop-blur-xl rounded-r-full h-[85vh] my-auto shadow-2xl"
+    >
+      <div class="mb-8 flex flex-col items-center">
+        <div
+          class="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-fixed p-0.5 shadow-lg border-2 border-white/20"
+        >
+          <img
+            alt="Expressive Dragon Companion"
+            class="w-full h-full object-cover rounded-full"
+            data-alt="A cute stylized 3D rendered baby dragon with deep purple scales and large expressive eyes, sitting playfully"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrqbFVgjaUKHwgcMkwhkyRHe6eMXfjF5FxaGE5WZeQa2qo43TLY0R_UauQvnraRylfp_3PE-C0PH4ZHkps3fPdvnvTg2yw35bRS7isgydXq9EmO0GPOkv5j2rh6uK26xAs4AjwMjn3ZaDl0kmCLKb9oItnMnsRyzi5lq-zE0akWLarxtwEbrKMwAuMrov9QZsyl0ZksFbwAAFBnWvk0N4finyX8d9lTt19TAx2L0qPEyft7DnHv-a7vlvK_-ww90-mq39gEOcTsXy6"
+          />
+        </div>
+        <span
+          class="text-[10px] text-primary mt-2 font-headline font-black uppercase tracking-widest"
+          >LVL 12</span
+        >
+      </div>
+      <div class="flex flex-col gap-4 w-full">
+        <a
+          class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full mx-2 h-14 shadow-[0_4px_0_#715c00] scale-95 active:translate-y-1 active:shadow-none transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="map">map</span>
+        </a>
+        <a
+          class="flex flex-col items-center justify-center text-white/70 m-2 h-14 hover:bg-white/10 rounded-full transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+        </a>
+        <a
+          class="flex flex-col items-center justify-center text-white/70 m-2 h-14 hover:bg-white/10 rounded-full transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="emoji_objects">emoji_objects</span>
+        </a>
+        <a
+          class="flex flex-col items-center justify-center text-white/70 m-2 h-14 hover:bg-white/10 rounded-full transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="volume_up">volume_up</span>
+        </a>
+      </div>
+    </nav>
+    <!-- Main Canvas: City View Map -->
+    <main class="relative w-full h-screen isometric-grid bg-surface overflow-hidden">
+      <!-- Map Content -->
+      <div class="relative w-full h-full flex items-center justify-center">
+        <!-- Path Container (Asymmetric Layout) -->
+        <div class="relative w-[1200px] h-[800px] rotate-[-10deg] skew-x-[15deg]">
+          <!-- Progress Dotted Path -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 1200 800">
+            <path
+              d="M100,600 Q300,550 400,400 T700,300 T1000,100"
+              fill="none"
+              opacity="0.4"
+              stroke="#FFCF00"
+              stroke-dasharray="24 18"
+              stroke-linecap="round"
+              stroke-width="12"
+            ></path>
+          </svg>
+          <!-- Level 1: Apple (Completed) -->
+          <div class="absolute left-[80px] top-[580px] -rotate-[-10deg] -skew-x-[15deg]">
+            <div class="group cursor-pointer">
+              <div
+                class="w-32 h-32 bg-white rounded-3xl lego-shadow p-2 flex flex-col items-center justify-center hover:scale-105 transition-transform border-4 border-surface-container-highest"
+              >
+                <img
+                  alt="Level 1 Apple"
+                  class="w-20 h-20 object-contain"
+                  data-alt="A lego style 3D block model of a bright red apple with a green leaf, glossy plastic texture"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH1pv-nkYQDha90EmLflXU_u1dAeectnH8TwWwqTmJmcrJpFsKoVzgm_8N69I2SfKTduJ0asJ6v8sjKVkEqwt0T_b73jaRWtI9VRF42KYaRIurrlsAt1Df2FqKUPUiVSE-Brbe64ukSEe-7U6h0s3wsDEALwyfk0a7SXh0JhQWJZT9aFW86Jmn4RD7CK_krTq0uDHyI8Op_6zRcoJyQHvdJWknWGq8FjDocpvIXZEfauoU6OAOTRbFmyJAElNvPvvfq8Y7yFHyht94"
+                />
+                <span
+                  class="material-symbols-outlined text-primary absolute -top-2 -right-2 bg-white rounded-full p-1 shadow-md border-2 border-surface-container-highest"
+                  style="font-variation-settings: 'FILL' 1"
+                  >check_circle</span
+                >
+              </div>
+              <span
+                class="block text-center mt-3 font-headline font-black text-on-surface/40 text-sm tracking-tighter uppercase"
+                >AP-PLE</span
+              >
+            </div>
+          </div>
+          <!-- Level 2: Car (Completed) -->
+          <div class="absolute left-[350px] top-[400px] -rotate-[-10deg] -skew-x-[15deg]">
+            <div class="group cursor-pointer">
+              <div
+                class="w-40 h-32 bg-white rounded-3xl lego-shadow p-2 flex flex-col items-center justify-center hover:scale-105 transition-transform border-4 border-surface-container-highest"
+              >
+                <img
+                  alt="Level 2 Car"
+                  class="w-24 h-24 object-contain"
+                  data-alt="A lego style 3D block model of a blue toy car with yellow wheels, glossy plastic texture"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxj0Yfphs3ZTiiITGrAvsYRcnjUc6egXecWj7-IKsFkAdjbvDlVrwxi3uAv9otvMakBszfOtzOMk_N3tmEAc4i3FK_tjF_eFh5PpPSz6TasC4fH2AOb5_S5uHghtPFbh7ioaBo-siJglnzH80kC-6wHzQpHo5PIvwXc6jRpN3clw5AlwYl8SBhGdZccBq-DJjP53Gt1G1P8FPH8xQJEksiQ9B5wwMqwNpc8nO1hfH7E6YM5ECpqtcR9YIPB4_8Fon9okCw1kIt8byX"
+                />
+                <span
+                  class="material-symbols-outlined text-primary absolute -top-2 -right-2 bg-white rounded-full p-1 shadow-md border-2 border-surface-container-highest"
+                  style="font-variation-settings: 'FILL' 1"
+                  >check_circle</span
+                >
+              </div>
+              <span
+                class="block text-center mt-3 font-headline font-black text-on-surface/40 text-sm tracking-tighter uppercase"
+                >FA-ST CAR</span
+              >
+            </div>
+          </div>
+          <!-- Current Level: House Builder (ACTIVE) -->
+          <div class="absolute left-[650px] top-[250px] -rotate-[-10deg] -skew-x-[15deg] z-10">
+            <div class="relative">
+              <div class="absolute -inset-12 bg-primary/20 rounded-full blur-3xl"></div>
+              <div
+                class="relative w-56 h-56 bg-white rounded-3xl shadow-[0_32px_0_#ffefa3] p-4 flex flex-col items-center justify-center border-4 border-primary"
+              >
+                <div
+                  class="absolute -top-6 left-1/2 -translate-x-1/2 bg-on-background text-primary px-6 py-1.5 rounded-full font-headline font-black text-xs whitespace-nowrap shadow-xl uppercase tracking-widest"
+                >
+                  ACTIVE
+                </div>
+                <img
+                  alt="Level 12 House"
+                  class="w-36 h-36 object-contain mb-2"
+                  data-alt="A complex lego style 3D model of a colorful cozy house with a garden, semi-finished with visible building blocks"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw7jpG38BWeA0pc7ClLL4O3ikaQmPYyR-bfiepfaDpufspJa_KFI2HdvNhGtq1igo40qcwC4jg0NI-GmK00DbJcsatb65CR3TyHn8s8MWlA80D4_YCUTVEoP3s99oVL7aepFBJbgYlTqv2nWLEf92DCh1RS9Uea2kMECwTBrghllXuumYZIWFORwpNtEvCb7WYxJLqvgnL2w39wIt7cwB7EaPjl8Wt3glXrqKQtTmwJR2nmzbjCRzf-WwFx9FaNgY70QVRg6Fhuyvy"
+                />
+                <button
+                  class="bg-primary text-on-primary font-headline font-black px-10 py-3 rounded-full shadow-[0_8px_0_#715c00] active:translate-y-1 active:shadow-none transition-all flex items-center gap-2 text-lg"
+                >
+                  PLAY
+                  <span
+                    class="material-symbols-outlined text-2xl"
+                    style="font-variation-settings: 'FILL' 1"
+                    >play_arrow</span
+                  >
+                </button>
+              </div>
+              <span
+                class="block text-center mt-12 font-headline font-black text-on-background text-xl uppercase tracking-tighter"
+                >HOUSE BUILD-ER</span
+              >
+            </div>
+          </div>
+          <!-- Locked Level: Castle -->
+          <div
+            class="absolute left-[950px] top-[80px] -rotate-[-10deg] -skew-x-[15deg] opacity-40 grayscale"
+          >
+            <div class="group">
+              <div
+                class="w-48 h-40 bg-surface-container-highest rounded-3xl border-4 border-dashed border-outline-variant p-2 flex flex-col items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2"
+                  >lock</span
+                >
+                <img
+                  alt="Level 13 Locked"
+                  class="w-24 h-24 object-contain opacity-30"
+                  data-alt="Silhouette of a grand lego castle with multiple towers and a drawbridge"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJzPBSAjyTw-I3zv7zgNhu-YB_Ih7qv0i8VTNY2v0eQsftWuEU7Q_wKYwxH1RiU6rzo9LV02T-L279ncZZDv-zHO9QS4nwSPXnD12i4-9D6AoZk8B8wafRrxFs5EeQO7JLa-ouXUWiYifCZEfTXMd-uGfTwUZRqFVMYZrxZB6ZjdEGwLQSuQ1MwGZf2f0RywJuy14OoN02GiJBarpCkoTPpEKNCwxQdEHcdpfFN-_QJJoATn46-oOg8Qev6h2GgQS5ZS0GmBYEocPa"
+                />
+              </div>
+              <span
+                class="block text-center mt-3 font-headline font-black text-on-surface-variant text-sm uppercase"
+                >??? ???</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Dragon Valley Exploration Bubble -->
+      <div class="fixed bottom-32 right-12 z-30 group cursor-pointer">
+        <div
+          class="bg-on-background text-surface p-5 rounded-3xl shadow-2xl flex items-center gap-4 max-w-xs hover:scale-105 transition-transform border-2 border-primary/30"
+        >
+          <div class="relative">
+            <div
+              class="w-16 h-16 rounded-full overflow-hidden bg-primary shadow-inner ring-4 ring-primary"
+            >
+              <img
+                alt="Dragon Avatar"
+                class="w-full h-full object-cover"
+                data-alt="Close up face of a friendly 3D cartoon dragon with purple scales"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI55k3k4-t7FWqKC07jaDW2dmq_agWxyub9YnNluPNsiNRuCeXIxn-3QR62KQ2WAJWQWUloZfkmrpSaUcjICWh0iSnGoCVrgaEtfN5CNoSX2niwMTwCamAeVVudzGlwwuROXd7MSGdFtUL77_zloH1_FPrdlUGqq4z9woj3grMkCYBwGq-fNdk_F689sSRampMTRaNqSKPXKvlTuF9_lzRI0yjCaRNRG2ZhnJzTDAKDsZK6f6-l6cx0cYLfY39U2PHxE7C6SU74Syr"
+              />
+            </div>
+            <div
+              class="absolute -bottom-1 -right-1 w-7 h-7 bg-primary rounded-full border-4 border-on-background flex items-center justify-center"
+            >
+              <span
+                class="material-symbols-outlined text-[14px] text-on-primary font-black"
+                style="font-variation-settings: 'FILL' 1"
+                >explore</span
+              >
+            </div>
+          </div>
+          <div>
+            <h4
+              class="font-headline font-black text-sm leading-tight text-primary uppercase tracking-tight"
+            >
+              Dragon Valley Exploration
+            </h4>
+            <p class="font-body text-xs text-surface/70 mt-1 italic">
+              "We need more blocks for the roof!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- BottomNavBar -->
+    <footer
+      class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-8 pb-4 h-28 bg-white/80 backdrop-blur-md border-t-4 border-surface-container-highest shadow-2xl"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-on-surface-variant pb-6 hover:text-primary transition-colors group"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform"
+          data-icon="architecture"
+          >architecture</span
+        >
+        <span class="font-label text-[10px] font-black uppercase tracking-widest mt-2">Build</span>
+      </a>
+      <a
+        class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full w-20 h-20 -translate-y-6 border-8 border-white shadow-[0_8px_24px_rgba(255,207,0,0.3)] group active:translate-y-[-16px] transition-all"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform"
+          data-icon="grid_view"
+          >grid_view</span
+        >
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-on-surface-variant pb-6 hover:text-primary transition-colors group"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform"
+          data-icon="settings"
+          >settings</span
+        >
+        <span class="font-label text-[10px] font-black uppercase tracking-widest mt-2"
+          >Settings</span
+        >
+      </a>
+    </footer>
+  </body>
+</html>
