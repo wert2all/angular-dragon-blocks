@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CenterLayout } from './layout/center-layout';
 import { GameContent } from './layout/game-content';
-import { Header } from './layout/header';
+import { Header } from './layout/header/header';
 
 @Component({
   selector: 'app-root',
