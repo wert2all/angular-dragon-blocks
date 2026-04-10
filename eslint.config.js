@@ -54,7 +54,7 @@ export default [
   },
   {
     files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
-    ignores: ['commitlint.config.js', 'eslint.config.js'],
+    ignores: ['commitlint.config.js', 'commitlint.config.cjs', 'eslint.config.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
