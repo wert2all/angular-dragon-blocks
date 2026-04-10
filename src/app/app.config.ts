@@ -1,7 +1,7 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideIcons, provideNgIconsConfig } from '@ng-icons/core';
-import { hugeVolumeHigh, hugeVolumeMute02 } from '@ng-icons/huge-icons';
+import { hugeCompass, hugeVolumeHigh, hugeVolumeMute02 } from '@ng-icons/huge-icons';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
     provideNgIconsConfig({
       size: '1em',
     }),
-    provideIcons({ hugeVolumeHigh, hugeVolumeMute02 }),
+    provideIcons({ hugeVolumeHigh, hugeVolumeMute02, hugeCompass }),
   ],
 };
