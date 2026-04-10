@@ -65,7 +65,9 @@ import { Component, HostAttributeToken, inject } from '@angular/core';
 
 @Component({
   selector: 'app-btn',
-  template: `<ng-content />`,
+  template: `
+    <ng-content />
+  `,
 })
 export class AppButton {
   // Throws error if 'type' is missing unless injected with { optional: true }

@@ -55,7 +55,9 @@ import { AnalyticsLogger } from './analytics-logger.service';
 
 @Component({
   selector: 'app-navbar',
-  template: `<a href="#" (click)="navigateToDetail($event)">Detail Page</a>`,
+  template: `
+    <a href="#" (click)="navigateToDetail($event)">Detail Page</a>
+  `,
 })
 export class Navbar {
   // Injecting dependencies using class field initializers

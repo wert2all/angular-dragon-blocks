@@ -121,7 +121,7 @@ Retrieve animations directly using standard Web APIs:
 
 ```ts
 const animations = element.getAnimations();
-animations.forEach((anim) => anim.pause());
+animations.forEach(anim => anim.pause());
 ```
 
 ## 3. Legacy Animations DSL (Deprecated)
@@ -152,7 +152,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       transition('open <=> closed', [animate('0.5s')]),
     ]),
   ],
-  template: `<div [@openClose]="isOpen() ? 'open' : 'closed'">...</div>`,
+  template: `
+    <div [@openClose]="isOpen() ? 'open' : 'closed'">...</div>
+  `,
 })
 export class OpenClose {
   isOpen = signal(true);

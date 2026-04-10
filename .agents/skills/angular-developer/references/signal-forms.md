@@ -79,7 +79,7 @@ import { required, email, min, max, minLength, maxLength, pattern } from '@angul
 Use them in the schema function passed to `form()`:
 
 ```ts
-userForm = form(this.userModel, (schemaPath) => {
+userForm = form(this.userModel, schemaPath => {
   // Required
   required(schemaPath.name, { message: 'Name is required' });
 
@@ -143,7 +143,7 @@ Control field status using rules in the schema.
 ```ts
 import { disabled, readonly, hidden } from '@angular/forms/signals';
 
-userForm = form(this.userModel, (schemaPath) => {
+userForm = form(this.userModel, schemaPath => {
   // Conditionally disabled
   disabled(schemaPath.password, ({ valueOf }) => !valueOf(schemaPath.createAccount));
 
@@ -303,7 +303,7 @@ validate(
     if (value() === 'admin') {
       return { kind: 'reserved', message: 'Username admin is reserved' };
     }
-  },
+  }
 );
 ```
 
@@ -329,7 +329,7 @@ applyWhen(p.ssn, ({ valueOf }) => valueOf(p.ssn) !== '', (ssnField) => { ... });
 
 ```ts
 // CORRECT - single argument
-applyEach(s.items, (item) => {
+applyEach(s.items, item => {
   required(item.name);
 });
 
@@ -356,8 +356,7 @@ applyEach(s.items, (item, index) => {
 } }
 
 <!-- CORRECT - use let to store outer index -->
-@for (item of form.items; track $index; let outerIndex = $index) { @for (option of item.options;
-track $index) {
+@for (item of form.items; track $index; let outerIndex = $index) { @for (option of item.options; track $index) {
 <button (click)="removeOption(outerIndex, $index)">Remove</button>
 } }
 ```
@@ -387,24 +386,23 @@ Do not use `validate()` for async, instead use `validateAsync()`:
 import { resource } from '@angular/core';
 import { validateAsync } from '@angular/forms/signals';
 
-userForm = form(this.userModel, (s) => {
+userForm = form(this.userModel, s => {
   validateAsync(s.username, {
     // 1. MUST be a function - params takes context and returns the value
     params: ({ value }) => value(),
 
     // 2. Create the resource - factory receives a Signal
-    factory: (username) =>
+    factory: username =>
       resource({
         params: username, // Use 'params' in resource()
         loader: async ({ params: value }) => {
-          await new Promise((resolve) => setTimeout(resolve, 1000));
+          await new Promise(resolve => setTimeout(resolve, 1000));
           return value === 'taken';
         },
       }),
 
     // 3. Map success to errors
-    onSuccess: (isTaken) =>
-      isTaken ? { kind: 'taken', message: 'Username is already taken' } : undefined,
+    onSuccess: isTaken => (isTaken ? { kind: 'taken', message: 'Username is already taken' } : undefined),
 
     // 4. Handle errors - THIS IS REQUIRED!
     onError: () => ({ kind: 'error', message: 'Validation failed' }),
@@ -424,11 +422,11 @@ validateAsync(s.username, {
 // WRONG - missing onError (it's required!)
 validateAsync(s.username, {
   params: ({ value }) => value(),
-  factory: (username) =>
+  factory: username =>
     resource({
       /* ... */
     }),
-  onSuccess: (result) => (result ? { kind: 'error' } : undefined),
+  onSuccess: result => (result ? { kind: 'error' } : undefined),
   // ERROR: 'onError' is missing but required!
 });
 ```
@@ -460,7 +458,7 @@ Use `debounce()` to delay synchronization between the UI and the model.
 ```ts
 import { debounce } from '@angular/forms/signals';
 
-userForm = form(this.userModel, (s) => {
+userForm = form(this.userModel, s => {
   // Delay model updates by 300ms
   debounce(s.username, 300);
 });
@@ -471,17 +469,17 @@ userForm = form(this.userModel, (s) => {
 ```ts
 form(
   data,
-  (path) => {
+  path => {
     applyWhen(
       name,
       ({ value }) => value() !== 'admin',
-      (namePath) => {
+      namePath => {
         validate(namePath.last /* ... */);
         disable(namePath.last /* ... */);
-      },
+      }
     );
   },
-  { injector: TestBed.inject(Injector) },
+  { injector: TestBed.inject(Injector) }
 );
 ```
 
@@ -491,16 +489,16 @@ If you need parent field, just pass it to `applyWhen`:
 ```ts
 form(
   data,
-  (path) => {
+  path => {
     applyWhen(
       cat,
       ({ value }) => value().name !== 'admin',
-      (catPath) => {
+      catPath => {
         require(cat.catPath /* ... */);
-      },
+      }
     );
   },
-  { injector: TestBed.inject(Injector) },
+  { injector: TestBed.inject(Injector) }
 );
 ```
 
@@ -539,17 +537,7 @@ form(
 
 ```ts
 import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
-import {
-  form,
-  FormField,
-  submit,
-  required,
-  email,
-  min,
-  hidden,
-  applyEach,
-  validate,
-} from '@angular/forms/signals';
+import { form, FormField, submit, required, email, min, hidden, applyEach, validate } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-root',
@@ -577,7 +565,7 @@ export class App {
     companions: [] as Array<{ name: string; relation: string }>,
   });
 
-  bookingForm = form(this.model, (s) => {
+  bookingForm = form(this.model, s => {
     required(s.personalInfo.firstName, { message: 'First name is required' });
     required(s.personalInfo.lastName, { message: 'Last name is required' });
     required(s.personalInfo.email, { message: 'Email is required' });
@@ -600,21 +588,21 @@ export class App {
     // valueOf is used to access values of other fields in rules
     hidden(s.package.extras, ({ valueOf }) => valueOf(s.package.tier) === 'economy');
 
-    applyEach(s.companions, (companion) => {
+    applyEach(s.companions, companion => {
       required(companion.name, { message: 'Companion name required' });
       required(companion.relation, { message: 'Relation required' });
     });
   });
 
   addCompanion() {
-    this.model.update((m) => ({
+    this.model.update(m => ({
       ...m,
       companions: [...m.companions, { name: '', relation: '' }],
     }));
   }
 
   removeCompanion(index: number) {
-    this.model.update((m) => ({
+    this.model.update(m => ({
       ...m,
       companions: m.companions.filter((_, i) => i !== index),
     }));
@@ -643,8 +631,7 @@ export class App {
     <label>
       First Name
       <input [formField]="bookingForm.personalInfo.firstName" />
-      @if (bookingForm.personalInfo.firstName().touched() &&
-      bookingForm.personalInfo.firstName().errors().length) {
+      @if (bookingForm.personalInfo.firstName().touched() && bookingForm.personalInfo.firstName().errors().length) {
       <span>{{ bookingForm.personalInfo.firstName().errors()[0].message }}</span>
       }
     </label>
@@ -652,8 +639,7 @@ export class App {
     <label>
       Last Name
       <input [formField]="bookingForm.personalInfo.lastName" />
-      @if (bookingForm.personalInfo.lastName().touched() &&
-      bookingForm.personalInfo.lastName().errors().length) {
+      @if (bookingForm.personalInfo.lastName().touched() && bookingForm.personalInfo.lastName().errors().length) {
       <span>{{ bookingForm.personalInfo.lastName().errors()[0].message }}</span>
       }
     </label>
@@ -661,8 +647,7 @@ export class App {
     <label>
       Email
       <input type="email" [formField]="bookingForm.personalInfo.email" />
-      @if (bookingForm.personalInfo.email().touched() &&
-      bookingForm.personalInfo.email().errors().length) {
+      @if (bookingForm.personalInfo.email().touched() && bookingForm.personalInfo.email().errors().length) {
       <span>{{ bookingForm.personalInfo.email().errors()[0].message }}</span>
       }
     </label>
@@ -670,8 +655,7 @@ export class App {
     <label>
       Age
       <input type="number" [formField]="bookingForm.personalInfo.age" />
-      @if (bookingForm.personalInfo.age().touched() &&
-      bookingForm.personalInfo.age().errors().length) {
+      @if (bookingForm.personalInfo.age().touched() && bookingForm.personalInfo.age().errors().length) {
       <span>{{ bookingForm.personalInfo.age().errors()[0].message }}</span>
       }
     </label>
@@ -692,8 +676,7 @@ export class App {
     <label>
       Launch Date
       <input type="date" [formField]="bookingForm.tripDetails.launchDate" />
-      @if (bookingForm.tripDetails.launchDate().touched() &&
-      bookingForm.tripDetails.launchDate().errors().length) {
+      @if (bookingForm.tripDetails.launchDate().touched() && bookingForm.tripDetails.launchDate().errors().length) {
       <span>{{ bookingForm.tripDetails.launchDate().errors()[0].message }}</span>
       }
     </label>
@@ -775,7 +758,7 @@ const val = this.form.field().value();
 // WRONG
 this.form.address.street.set('Main St');
 // RIGHT - update the model signal instead
-this.model.update((m) => ({ ...m, address: { ...m.address, street: 'Main St' } }));
+this.model.update(m => ({ ...m, address: { ...m.address, street: 'Main St' } }));
 ```
 
 ### `Type 'string[]' is not assignable to type 'string'`
@@ -835,7 +818,7 @@ model = signal({ hasWifi: false, hasGym: false });
 pattern(s.ssn, /^\d{3}-\d{2}-\d{4}$/, { when: isJoint });
 
 // RIGHT - use applyWhen for conditional non-required validators
-applyWhen(s.ssn, isJoint, (ssnPath) => {
+applyWhen(s.ssn, isJoint, ssnPath => {
   pattern(ssnPath, /^\d{3}-\d{2}-\d{4}$/);
 });
 ```

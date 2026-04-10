@@ -19,7 +19,7 @@ console.log(count());
 count.set(3);
 
 // Update based on the previous value
-count.update((value) => value + 1);
+count.update(value => value + 1);
 ```
 
 ### Exposing as Readonly
