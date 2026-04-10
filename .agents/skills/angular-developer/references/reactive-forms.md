@@ -17,13 +17,7 @@ Import `ReactiveFormsModule` into your component.
 
 ```ts
 import { Component, inject } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-editor',
@@ -113,7 +107,7 @@ Modern Angular (v18+) provides a single `events` observable on all controls to t
 ```ts
 import { ValueChangeEvent, StatusChangeEvent } from '@angular/forms';
 
-this.profileForm.events.subscribe((event) => {
+this.profileForm.events.subscribe(event => {
   if (event instanceof ValueChangeEvent) {
     console.log('New value:', event.value);
   }

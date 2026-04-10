@@ -33,7 +33,9 @@ Organizes related content into expandable/collapsible sections.
 @Component({
   selector: 'app-cmp',
   imports: [AccordionContent, AccordionGroup, AccordionPanel, AccordionTrigger],
-  template: `...`,
+  template: `
+    ...
+  `,
   styles: [],
 })
 export class App {
@@ -88,7 +90,9 @@ A foundational directive for displaying a list of options. Used for visible sele
 @Component({
   selector: 'app-cmp',
   imports: [Listbox, Option],
-  template: `...`,
+  template: `
+    ...
+  `,
   styles: [],
 })
 export class App {
@@ -146,9 +150,7 @@ These patterns combine `ngCombobox` with a popup containing an `ngListbox`.
 ```html
 <!-- Example: Standard Select -->
 <div ngCombobox [readonly]="true">
-  <button ngComboboxInput class="select-trigger">
-    {{ selectedValue() || 'Choose an option' }}
-  </button>
+  <button ngComboboxInput class="select-trigger">{{ selectedValue() || 'Choose an option' }}</button>
 
   <ng-template ngComboboxPopupContainer>
     <ul ngListbox [(values)]="selectedValue" class="dropdown-menu">

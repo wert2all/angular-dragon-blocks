@@ -11,7 +11,9 @@ import { Component, input, computed } from '@angular/core';
 
 @Component({
   selector: 'app-user',
-  template: `<p>User: {{ name() }} ({{ age() }})</p>`,
+  template: `
+    <p>User: {{ name() }} ({{ age() }})</p>
+  `,
 })
 export class User {
   // Optional input with default value
@@ -58,13 +60,15 @@ Use `model()` to create an input that supports two-way data binding.
 ```ts
 @Component({
   selector: 'custom-counter',
-  template: `<button (click)="increment()">+</button>`,
+  template: `
+    <button (click)="increment()">+</button>
+  `,
 })
 export class CustomCounter {
   value = model(0);
 
   increment() {
-    this.value.update((v) => v + 1);
+    this.value.update(v => v + 1);
   }
 }
 ```
