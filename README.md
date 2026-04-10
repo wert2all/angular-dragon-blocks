@@ -9,16 +9,17 @@
 ## Game Mechanics
 
 ### Workspace
+
 - A large Lego baseplate acts as the workspace.
 - At the bottom of the screen is a **bin** containing syllable blocks (e.g., **MA**, **LO**, **BA**, **KA**).
 - Children use the mouse (or touch) to grab a block and attach it to other blocks on the plate.
 
 ### Difficulty Levels (Hint Mechanics)
 
-| Level | Name | Hint Type | Description |
-|-------|------|-----------|-------------|
-| ![Green](https://via.placeholder.com/15/00ff00/000000?text=+) | **Level 1 – Master’s Blueprint** (Guided) | Semi‑transparent ghost blocks on the plate showing the needed syllables (e.g., **CA**, **KE**). | Children simply find the matching blocks and overlay them on the hints. Toothless voices each syllable and then the whole word when the blocks match. |
-| ![Red](https://via.placeholder.com/15/ff0000/000000?text=+) | **Level 2 – Secret Model** (No Hints) | Only an image (e.g., a Lego fish) is shown; no text guide. | Children independently locate the correct syllables (**FI**, **SH**) from the bin and connect them in order. Correct assembly triggers Toothless to celebrate and transforms the blocks into the depicted object. |
+| Level                                                         | Name                                      | Hint Type                                                                                       | Description                                                                                                                                                                                                       |
+| ------------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Green](https://via.placeholder.com/15/00ff00/000000?text=+) | **Level 1 – Master’s Blueprint** (Guided) | Semi‑transparent ghost blocks on the plate showing the needed syllables (e.g., **CA**, **KE**). | Children simply find the matching blocks and overlay them on the hints. Toothless voices each syllable and then the whole word when the blocks match.                                                             |
+| ![Red](https://via.placeholder.com/15/ff0000/000000?text=+)   | **Level 2 – Secret Model** (No Hints)     | Only an image (e.g., a Lego fish) is shown; no text guide.                                      | Children independently locate the correct syllables (**FI**, **SH**) from the bin and connect them in order. Correct assembly triggers Toothless to celebrate and transforms the blocks into the depicted object. |
 
 ### Word Progression
 
@@ -104,4 +105,4 @@ This project is licensed under the **GNU General Public License v3.0** (GPL‑3.
 
 ---
 
-*Take a step into the world of syllable blocks, help Toothless build, and watch reading skills take flight!*
+_Take a step into the world of syllable blocks, help Toothless build, and watch reading skills take flight!_
