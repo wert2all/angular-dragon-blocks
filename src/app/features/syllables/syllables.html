@@ -1,9 +1,15 @@
 @if (syllables().length > 0) {
-  <div class="flex flex-wrap justify-center gap-3">
-    @for (item of syllables(); track item.value) {
-      <app-syllable [value]="item.value" [colorClass]="item.colorClass" />
-    }
+  <div class="flex justify-center">
+    <div
+      class="inline-flex flex-wrap justify-center gap-3 rounded-lg border-2 border-dashed border-vibrant-orange p-10">
+      @for (item of syllables(); track item.value) {
+        <app-syllable [value]="item.value" [colorClass]="item.colorClass" />
+      }
+    </div>
   </div>
 } @else {
-  <div class="flex flex-wrap justify-center gap-3 opacity-50"></div>
+  <div class="flex justify-center">
+    <div
+      class="inline-flex flex-wrap justify-center gap-3 rounded-lg border-2 border-dashed border-vibrant-orange p-10 opacity-50"></div>
+  </div>
 }
