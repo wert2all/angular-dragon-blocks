@@ -1,5 +1,16 @@
-<button
-  class="syllable-block group gloss-effect flex items-center justify-center rounded-[2rem] px-10 py-8 transition-all">
-  <div class="interlock-peg"></div>
-  <span class="font-headline text-5xl font-black tracking-tight drop-shadow-sm">{{ value() }}</span>
+<button [class]="classes" [attr.data-letter]="value()">
+  <!-- Top row of studs -->
+  <div class="stud-row">
+    <div class="stud"></div>
+    <div class="stud"></div>
+  </div>
+  <div class="stud-row">
+    <div class="stud"></div>
+    <div class="stud"></div>
+  </div>
+
+  <!-- Brick face with letter -->
+  <div class="brick-face">
+    <span class="brick-text">{{ value() }}</span>
+  </div>
 </button>
