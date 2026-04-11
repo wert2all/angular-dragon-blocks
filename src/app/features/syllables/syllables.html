@@ -1,7 +1,9 @@
-<div class="flex flex-wrap justify-center gap-6">
-  <!-- Correct: RO -->
-
-  <app-syllable value="to" />
-  <app-syllable value="ro" colorClass="lego-soft-teal" />
-  <app-syllable value="cat" colorClass="lego-vibrant-orange" />
-</div>
+@if (syllables().length > 0) {
+  <div class="flex flex-wrap justify-center gap-3">
+    @for (item of syllables(); track item.value) {
+      <app-syllable [value]="item.value" [colorClass]="item.colorClass" />
+    }
+  </div>
+} @else {
+  <div class="flex flex-wrap justify-center gap-3 opacity-50"></div>
+}
