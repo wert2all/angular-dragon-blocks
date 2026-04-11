@@ -16,5 +16,12 @@
       <span class="mr-8 ml-4 hidden md:inline">Reading Adventures</span>
     </span>
   </a>
-  <app-volume-toggler [isVolumeOn]="isVolumeOn()" (toggle)="toggleVolume()"></app-volume-toggler>
+  <nav class="flex items-center gap-4">
+    <a
+      routerLink="/quest/1"
+      class="rounded-lg bg-soft-teal/30 px-4 py-2 text-deep-purple transition-colors hover:bg-soft-teal/50">
+      Quests
+    </a>
+    <app-volume-toggler [isVolumeOn]="isVolumeOn()" (toggle)="toggleVolume()"></app-volume-toggler>
+  </nav>
 </header>
