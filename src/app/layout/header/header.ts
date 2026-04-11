@@ -4,6 +4,7 @@ import {
   inject,
 } from "@angular/core";
 import { NgOptimizedImage } from "@angular/common";
+import { RouterLink } from "@angular/router";
 import { VolumeToggler } from "../../features/voice/share/volume-toggler/volume-toggler";
 import { AppActions } from "../../store/app.actions";
 import { Store } from "@ngrx/store";
@@ -12,7 +13,7 @@ import { appFeature } from "../../store/app.feature";
 @Component({
   selector: "app-header",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgOptimizedImage, VolumeToggler],
+  imports: [NgOptimizedImage, VolumeToggler, RouterLink],
   host: {
     class: "contents",
   },
