@@ -12,6 +12,7 @@ import {
 import { routes } from "./app.routes";
 import { provideState, provideStore } from "@ngrx/store";
 import { appFeature } from "./store/app.feature";
+import { questFeature } from "./pages/quest/store/quest-page.feature";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideIcons({ hugeVolumeHigh, hugeVolumeMute02, hugeCompass }),
     provideStore(),
     provideState(appFeature),
+    provideState(questFeature),
   ],
 };
