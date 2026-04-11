@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 const UKRAINIAN_VOWELS = ['а', 'е', 'є', 'и', 'і', 'ї', 'о', 'у', 'ю', 'я', 'А', 'Е', 'Є', 'И', 'І', 'Ї', 'О', 'У', 'Ю', 'Я'];
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class SyllableService {
   splitUkrainianWord(word: string): string[] {
     if (!word || word.length === 0) return [];
@@ -71,8 +73,7 @@ export class SyllableService {
   }
 
   private createFakeSyllable(consonants: string[], vowels: string[]): string {
-    const useConsonant = consonants.length > 0 && Math.random() > 0.3;
-    const consonant = useConsonant
+    const consonant = consonants.length > 0
       ? consonants[Math.floor(Math.random() * consonants.length)]
       : '';
     const vowel = vowels[Math.floor(Math.random() * vowels.length)];
