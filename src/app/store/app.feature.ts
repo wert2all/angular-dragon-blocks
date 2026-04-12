@@ -1,6 +1,6 @@
-import { createFeature, createReducer, createSelector, on } from "@ngrx/store";
-import { AppState } from "./app.types";
-import { AppActions } from "./app.actions";
+import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
+import { AppState } from './app.types';
+import { AppActions } from './app.actions';
 
 const initState: AppState = {
   loading: false,
@@ -8,18 +8,15 @@ const initState: AppState = {
 };
 
 export const appFeature = createFeature({
-  name: "app",
+  name: 'app',
   reducer: createReducer(
     initState,
 
-    on(
-      AppActions.toggleSound,
-      (state): AppState => ({ ...state, isVolumeOn: !state.isVolumeOn }),
-    ),
+    on(AppActions.toggleSound, (state): AppState => ({ ...state, isVolumeOn: !state.isVolumeOn }))
   ),
   extraSelectors: ({ selectIsVolumeOn }) => {
     return {
-      isVolumeOn: createSelector(selectIsVolumeOn, (isVolumeOn) => isVolumeOn),
+      isVolumeOn: createSelector(selectIsVolumeOn, isVolumeOn => isVolumeOn),
     };
   },
 });

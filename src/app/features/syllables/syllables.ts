@@ -1,6 +1,6 @@
-import { Component, computed, input, inject } from "@angular/core";
-import { LegoBrick } from "../../layout/lego-brick/lego-brick";
-import { SyllableService } from "../../core/services/syllable.service";
+import { Component, computed, input, inject } from '@angular/core';
+import { LegoBrick } from '../../layout/lego-brick/lego-brick';
+import { SyllableService } from '../../core/services/syllable.service';
 
 type SyllableColor = 'lego-deep-purple' | 'lego-soft-teal' | 'lego-vibrant-orange';
 
@@ -9,16 +9,12 @@ interface SyllableItem {
   colorClass: SyllableColor;
 }
 
-const SYLLABLE_COLORS: SyllableColor[] = [
-  'lego-deep-purple',
-  'lego-soft-teal',
-  'lego-vibrant-orange'
-];
+const SYLLABLE_COLORS: SyllableColor[] = ['lego-deep-purple', 'lego-soft-teal', 'lego-vibrant-orange'];
 
 @Component({
-  selector: "app-syllables",
-  templateUrl: "./syllables.html",
-  imports: [LegoBrick]
+  selector: 'app-syllables',
+  templateUrl: './syllables.html',
+  imports: [LegoBrick],
 })
 export class Syllabes {
   private syllableService = inject(SyllableService);
@@ -34,7 +30,7 @@ export class Syllabes {
     const texts = this.syllableService.generateSyllableSet(word, this.fakeCount()).all;
     return texts.map(text => ({
       value: text,
-      colorClass: this.getRandomColor()
+      colorClass: this.getRandomColor(),
     }));
   });
 
