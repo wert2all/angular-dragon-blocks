@@ -1,5 +1,5 @@
 import { Component, computed, input, inject } from "@angular/core";
-import { Syllable } from "./syllable/syllable";
+import { LegoBrick } from "../../layout/lego-brick/lego-brick";
 import { SyllableService } from "../../core/services/syllable.service";
 
 type SyllableColor = 'lego-deep-purple' | 'lego-soft-teal' | 'lego-vibrant-orange';
@@ -18,7 +18,7 @@ const SYLLABLE_COLORS: SyllableColor[] = [
 @Component({
   selector: "app-syllables",
   templateUrl: "./syllables.html",
-  imports: [Syllable]
+  imports: [LegoBrick]
 })
 export class Syllabes {
   private syllableService = inject(SyllableService);
