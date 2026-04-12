@@ -10,7 +10,7 @@ export const quests: Quest[] = [
   },
   {
     id: 2,
-    image: "/assets/quests/quest-1.png",
+    image: "/assets/quests/quest-2.png",
     syllables: ["та", "то"],
     isDone: false,
     position: { x: 17, y: 78 },
