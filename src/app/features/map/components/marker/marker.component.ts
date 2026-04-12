@@ -4,7 +4,7 @@ import {
   input,
   output,
 } from "@angular/core";
-import { ViewQuestMarker } from "../../quest/store/quest.types";
+import { ViewQuestMarker } from "../../../quest/store/quest.types";
 
 @Component({
   selector: "app-quest-marker",

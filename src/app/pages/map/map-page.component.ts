@@ -6,14 +6,15 @@ import {
 } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { questFeature } from "../../features/quest/store/quest.feature";
-import { QuestDetailComponent } from "./components/quest-detail/quest-detail.component";
 import { ViewQuestMarker } from "../../features/quest/store/quest.types";
-import { QuestMarkerComponent } from "../../features/map/components/marker.component";
+import { QuestMarkerComponent } from "../../features/map/components/marker/marker.component";
+import { MapDetailWindowComponent } from "../../features/map/components/detail-window/detail-window.component";
+
 @Component({
   selector: "app-map-page",
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./map-page.component.html",
-  imports: [QuestMarkerComponent, QuestDetailComponent],
+  imports: [QuestMarkerComponent, MapDetailWindowComponent],
 })
 export class MapPageComponent {
   private store = inject(Store);
