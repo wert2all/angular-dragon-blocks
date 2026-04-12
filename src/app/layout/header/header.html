@@ -18,10 +18,10 @@
   </a>
   <nav class="flex items-center gap-4">
     <a
-      routerLink="/quest/1"
+      routerLink="/map"
       class="rounded-lg bg-soft-teal/30 px-4 py-2 text-deep-purple transition-colors hover:bg-soft-teal/50">
-      Quests
+      <ng-icon name="hugeMapsLocation01" size="92"></ng-icon>
     </a>
-    <app-volume-toggler [isVolumeOn]="isVolumeOn()" (toggle)="toggleVolume()"></app-volume-toggler>
   </nav>
+  <app-volume-toggler [isVolumeOn]="isVolumeOn()" (toggle)="toggleVolume()"></app-volume-toggler>
 </header>

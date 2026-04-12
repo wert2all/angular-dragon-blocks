@@ -6,6 +6,7 @@ import { provideRouter } from "@angular/router";
 import { provideIcons } from "@ng-icons/core";
 import {
   hugeCompass,
+  hugeMapsLocation01,
   hugeVolumeHigh,
   hugeVolumeMute02,
 } from "@ng-icons/huge-icons";
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideIcons({ hugeVolumeHigh, hugeVolumeMute02, hugeCompass }),
+    provideIcons({ hugeVolumeHigh, hugeVolumeMute02, hugeCompass, hugeMapsLocation01 }),
     provideStore(),
     provideState(appFeature),
     provideState(questFeature),
