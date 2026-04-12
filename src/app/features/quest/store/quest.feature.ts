@@ -3,7 +3,9 @@ import { QuestActions } from './quest.actions';
 import { quests } from './quest.store';
 import { Quest, QuestState, ViewMap } from './quest.types';
 
-const getWord = (quest: Quest) => quest.syllables.join('');
+function getWord(quest: Quest): string {
+  return quest.syllables.join('');
+}
 
 const initState: QuestState = {
   list: quests,
@@ -16,10 +18,7 @@ export const questFeature = createFeature({
     initState,
 
     on(QuestActions.setActiveQuest, (state, { questId }): QuestState => {
-      if (!questId) {
-        return { ...state, activeQuest: null };
-      }
-      const foundQuest = state.list.filter(quest => quest.id == questId)[0];
+      const foundQuest = state.list.find(quest => quest.id === questId);
       if (!foundQuest) {
         return { ...state, activeQuest: null };
       }
@@ -38,32 +37,32 @@ export const questFeature = createFeature({
       };
     }),
 
-    on(
-      QuestActions.setDoneSyllable,
-      (state, { syllable, color }): QuestState =>
-        state.activeQuest
-          ? {
-              ...state,
-              activeQuest: {
-                ...state.activeQuest,
-                syllables: state.activeQuest.syllables.map(syl => ({
-                  ...syl,
-                  isDone: syl.syllable == syllable ? true : syl.isDone,
-                  color: syl.syllable == syllable ? color : syl.color,
-                })),
-              },
+    on(QuestActions.setDoneSyllable, (state, { syllable, color }): QuestState => {
+      if (!state.activeQuest) {
+        return state;
+      }
+
+      return {
+        ...state,
+        activeQuest: {
+          ...state.activeQuest,
+          syllables: state.activeQuest.syllables.map(syl => {
+            if (syl.syllable !== syllable) {
+              return syl;
             }
-          : state
-    )
+            return { ...syl, isDone: true, color };
+          }),
+        },
+      };
+    })
   ),
 
-  extraSelectors: ({ selectList }) => {
-    const selectKidQuests = createSelector(selectList, (all): ViewMap => {
-      return {
+  extraSelectors: ({ selectList }) => ({
+    selectKidQuests: createSelector(
+      selectList,
+      (all): ViewMap => ({
         quests: all.map(quest => ({ ...quest, word: getWord(quest) })),
-      };
-    });
-
-    return { selectKidQuests };
-  },
+      })
+    ),
+  }),
 });
