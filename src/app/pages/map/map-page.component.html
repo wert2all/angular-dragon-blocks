@@ -1,11 +1,17 @@
 <div class="inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
-  <div class="relative items-center justify-center" (click)="onMapClick()">
+  <div
+    class="relative items-center justify-center"
+    (click)="onMapClick()"
+    (keydown.enter)="onMapClick()"
+    tabindex="0"
+    role="region"
+    aria-label="Quest map">
     <img src="/gemini_generated_map.png" alt="Dragon's World Map" class="rounded-lg shadow-lg" />
     @for (quest of quests().quests; track quest.id) {
       <app-quest-marker [quest]="quest" (markerClick)="onMarkerClick($event)" />
     }
     @if (selectedQuest()) {
-      <app-quest-detail [quest]="selectedQuest()" (close)="closeDetail()" />
+      <app-quest-detail [quest]="selectedQuest()" (closeChange)="closeDetail()" />
     }
   </div>
 </div>

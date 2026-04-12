@@ -8,9 +8,9 @@ import { NgIcon } from "@ng-icons/core";
 })
 export class VolumeToggler {
   isVolumeOn = input.required<boolean>();
-  toggle = output();
+  toggleChange = output();
 
   protected toggleVolume() {
-    this.toggle.emit();
+    this.toggleChange.emit();
   }
 }

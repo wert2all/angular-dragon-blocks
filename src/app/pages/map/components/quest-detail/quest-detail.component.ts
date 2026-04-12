@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class QuestDetailComponent {
   readonly quest = input.required<ViewQuestMarker | null>();
-  readonly close = output<void>();
+  readonly closeChange = output<void>();
   private router = inject(Router);
 
   onWordClick() {

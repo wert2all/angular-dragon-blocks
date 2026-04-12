@@ -3,7 +3,11 @@
     class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
     [style.left.%]="quest().position.x"
     [style.top.%]="quest().position.y"
-    (click)="onClick($event)">
+    (click)="onClick($event)"
+    (keydown.enter)="onClick($event)"
+    tabindex="0"
+    role="button"
+    [attr.aria-label]="quest().word">
     <div
       class="h-14 w-14 rounded-2xl border-4 border-soft-teal transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_20px_rgba(171,218,220,0.6)]"
       [style.background-color]="quest().isDone ? 'var(--color-deep-purple)' : 'var(--color-vibrant-orange)'">
