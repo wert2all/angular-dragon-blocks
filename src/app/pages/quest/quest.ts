@@ -12,5 +12,5 @@ import { TaskComponent } from "../../features/quest/components/task/task";
 export class Quest {
   private readonly route = inject(ActivatedRoute);
 
-  readonly questId = this.route.snapshot.paramMap.get("id") ?? "";
+  readonly questId = Number(this.route.snapshot.paramMap.get("id"));
 }
