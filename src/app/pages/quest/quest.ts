@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Syllabes } from "../../features/syllables/syllables";
-import { TaskComponent } from "../../features/quest-task/quest-task";
+import { TaskComponent } from "../../features/quest/components/task/task";
 
 @Component({
   selector: "app-quest",
