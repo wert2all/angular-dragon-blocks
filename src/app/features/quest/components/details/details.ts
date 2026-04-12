@@ -9,6 +9,8 @@ import { Router } from "@angular/router";
 export class QuestDetails {
   private router = inject(Router);
   readonly quest = input.required<ViewQuestMarker | null>();
+  readonly isSmall = input(false);
+  readonly noClick = input(false);
 
   onWordClick() {
     const q = this.quest();
