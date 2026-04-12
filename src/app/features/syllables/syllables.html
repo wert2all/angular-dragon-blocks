@@ -2,7 +2,7 @@
   @if (syllables().length > 0) {
     <div
       class="inline-flex flex-wrap justify-center gap-3 rounded-lg border-2 border-dashed border-vibrant-orange p-10">
-      @for (item of syllables(); track item.value) {
+      @for (item of syllablesWithFakes(); track item.value) {
         <app-lego-brick [value]="item.value" [colorClass]="item.colorClass" />
       }
     </div>
