@@ -1,6 +1,6 @@
-<div class="rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
-  <div class="relative" (click)="onMapClick()">
-    <img src="/gemini_generated_map.png" alt="Dragon's World Map" class="h-auto max-w-full rounded-lg shadow-lg" />
+<div class="inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
+  <div class="relative items-center justify-center" (click)="onMapClick()">
+    <img src="/gemini_generated_map.png" alt="Dragon's World Map" class="rounded-lg shadow-lg" />
     @for (quest of quests().quests; track quest.id) {
       <app-quest-marker [quest]="quest" (markerClick)="onMarkerClick($event)" />
     }

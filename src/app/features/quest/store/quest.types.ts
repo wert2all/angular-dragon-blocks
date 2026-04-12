@@ -1,32 +1,32 @@
-export type MarkerPosition = {
+export interface MarkerPosition {
   x: number;
   y: number;
-};
+}
 
-export type Quest = {
+export interface Quest {
   id: number;
   image: string;
   syllables: string[];
   isDone: boolean;
   position: MarkerPosition;
-};
+}
 
 export type WithWordQuest = Quest & {
   word: string;
 };
 
-export type ViewQuestMarker = {
+export interface ViewQuestMarker {
   id: number;
   image: string;
   word: string;
   position: MarkerPosition;
   isDone: boolean;
-};
+}
 
-export type ViewMap = {
+export interface ViewMap {
   quests: ViewQuestMarker[];
-};
+}
 
-export type QuestState = {
+export interface QuestState {
   list: Quest[];
-};
+}
