@@ -1,4 +1,4 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 import { BrickColor, LegoBrick } from '../../layout/lego-brick/lego-brick';
 import { ViewSyllable } from '../quest/store/quest.types';
 
@@ -17,6 +17,7 @@ const SYLLABLE_COLORS: BrickColor[] = ['lego-deep-purple', 'lego-soft-teal', 'le
 export class Syllabes {
   syllables = input.required<ViewSyllable[]>();
   fakeCount = input<number>(0);
+  correctSyllable = output<{ syllable: string; color: BrickColor }>();
 
   /** Track which syllables are currently shaking */
   private shakingSyllables = signal<Set<string>>(new Set());
@@ -41,13 +42,13 @@ export class Syllabes {
   /**
    * Handle syllable click - shake if fake, do nothing if real
    */
-  protected onSyllableClick(syllable: string): void {
-    const item = this.syllables().find(s => s.syllable === syllable);
+  protected onSyllableClick(event: SyllableItem): void {
+    const item = this.syllables().find(s => s.syllable === event.value);
     if (!item) {
       // Add to shaking set
       this.shakingSyllables.update(set => {
         const newSet = new Set(set);
-        newSet.add(syllable);
+        newSet.add(event.value);
         return newSet;
       });
 
@@ -55,10 +56,12 @@ export class Syllabes {
       setTimeout(() => {
         this.shakingSyllables.update(set => {
           const newSet = new Set(set);
-          newSet.delete(syllable);
+          newSet.delete(event.value);
           return newSet;
         });
       }, 500);
+    } else {
+      this.correctSyllable.emit({ syllable: item.syllable, color: event.colorClass });
     }
     // If real syllable, do nothing (will be handled elsewhere)
   }

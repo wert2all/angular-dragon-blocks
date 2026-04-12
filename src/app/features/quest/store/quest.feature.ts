@@ -29,15 +29,32 @@ export const questFeature = createFeature({
         activeQuest: {
           ...foundQuest,
           word: getWord(foundQuest),
-          syllables: foundQuest.syllables.map(syllable => {
-            return {
-              syllable,
-              isDone: false,
-            };
-          }),
+          syllables: foundQuest.syllables.map(syllable => ({
+            syllable,
+            isDone: false,
+            color: null,
+          })),
         },
       };
-    })
+    }),
+
+    on(
+      QuestActions.setDoneSyllable,
+      (state, { syllable, color }): QuestState =>
+        state.activeQuest
+          ? {
+              ...state,
+              activeQuest: {
+                ...state.activeQuest,
+                syllables: state.activeQuest.syllables.map(syl => ({
+                  ...syl,
+                  isDone: syl.syllable == syllable ? true : syl.isDone,
+                  color: syl.syllable == syllable ? color : syl.color,
+                })),
+              },
+            }
+          : state
+    )
   ),
 
   extraSelectors: ({ selectList }) => {

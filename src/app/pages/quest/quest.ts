@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Syllabes } from '../../features/syllables/syllables';
-import { TaskComponent } from '../../features/quest/components/task/task';
 import { Store } from '@ngrx/store';
+import { TaskComponent } from '../../features/quest/components/task/task';
 import { QuestActions } from '../../features/quest/store/quest.actions';
 import { questFeature } from '../../features/quest/store/quest.feature';
+import { Syllabes } from '../../features/syllables/syllables';
+import { BrickColor } from '../../layout/lego-brick/lego-brick';
 
 @Component({
   selector: 'app-quest',
@@ -21,5 +22,8 @@ export class Quest {
   constructor() {
     const questId = Number(this.route.snapshot.paramMap.get('id') ?? '0');
     this.store.dispatch(QuestActions.setActiveQuest({ questId }));
+  }
+  protected setDone(item: { syllable: string; color: BrickColor }) {
+    this.store.dispatch(QuestActions.setDoneSyllable({ syllable: item.syllable, color: item.color }));
   }
 }

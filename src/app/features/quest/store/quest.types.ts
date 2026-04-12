@@ -1,3 +1,5 @@
+import { BrickColor } from '../../../layout/lego-brick/lego-brick';
+
 export interface MarkerPosition {
   x: number;
   y: number;
@@ -30,6 +32,7 @@ export interface ViewMap {
 
 export interface ViewSyllable {
   syllable: string;
+  color: BrickColor | null;
   isDone: boolean;
 }
 

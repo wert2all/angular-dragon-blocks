@@ -3,7 +3,10 @@
     <app-quest-task [quest]="activeQuest()" />
     <div class="my-6 block"></div>
     @if (activeQuest(); as activeQuest) {
-      <app-syllables [syllables]="activeQuest.syllables" [fakeCount]="activeQuest.fakeSyllables" />
+      <app-syllables
+        [syllables]="activeQuest.syllables"
+        [fakeCount]="activeQuest.fakeSyllables"
+        (correctSyllable)="setDone($event)" />
     }
   </div>
 </div>
