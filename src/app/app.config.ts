@@ -12,7 +12,7 @@ import {
 import { routes } from "./app.routes";
 import { provideState, provideStore } from "@ngrx/store";
 import { appFeature } from "./store/app.feature";
-import { questFeature } from "./pages/quest/store/quest-page.feature";
+import { questFeature } from "./features/quest/store/quest.feature";
 
 export const appConfig: ApplicationConfig = {
   providers: [
