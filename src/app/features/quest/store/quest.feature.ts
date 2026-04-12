@@ -1,13 +1,13 @@
 import { createFeature, createReducer, createSelector, on } from "@ngrx/store";
-import { Quest, QuestState, ViewActiveQuest, ViewMap } from "./quest.types";
-import { quests } from "./quest.store";
 import { QuestActions } from "./quest.actions";
+import { quests } from "./quest.store";
+import { Quest, QuestState, ViewMap } from "./quest.types";
 
 const getWord = (quest: Quest) => quest.syllables.join("");
 
 const initState: QuestState = {
   list: quests,
-  activeQuestId: null,
+  activeQuest: null,
 };
 
 export const questFeature = createFeature({
@@ -17,43 +17,39 @@ export const questFeature = createFeature({
 
     on(
       QuestActions.setActiveQuest,
-      (state, { questId }): QuestState => ({
+      (state, { questId }): QuestState => {
+      if( !questId){
+        return {...state, activeQuest: null}
+      }
+      const foundQuest = state.list.filter(quest=>quest.id == questId)[0];
+      if( !foundQuest){
+        return {...state, activeQuest:null}
+      }
+
+      return {
         ...state,
-        activeQuestId: questId,
-      }),
+        activeQuest: {
+          ...foundQuest,
+          word: getWord(foundQuest),
+          syllables: foundQuest.syllables.map(syllable=>{
+            return {
+              syllable,
+              isDone: false
+            }
+          })
+        }
+      }
+      },
     ),
   ),
 
-  extraSelectors: ({ selectList, selectActiveQuestId }) => {
+  extraSelectors: ({ selectList, }) => {
     const selectKidQuests = createSelector(selectList, (all): ViewMap => {
       return {
         quests: all.map((quest) => ({ ...quest, word: getWord(quest) })),
       };
     });
-    const selectActiveQuest = createSelector(
-      selectList,
-      selectActiveQuestId,
-      (all, activeQuestId): ViewActiveQuest | null => {
-        if (!activeQuestId) {
-          return null;
-        }
-        const activeQuest = all.filter((quest) => quest.id == activeQuestId)[0];
 
-        return activeQuest
-          ? {
-            ...activeQuest,
-            word: getWord(activeQuest),
-            syllables: activeQuest.syllables.map((syllable) => ({
-              syllable: syllable,
-              isDone: true,
-            })),
-          }
-          : null;
-      },
-    );
-    return {
-      selectKidQuests,
-      selectActiveQuest,
-    };
+    return {  selectKidQuests,};
   },
 });

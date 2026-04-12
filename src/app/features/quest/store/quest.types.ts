@@ -31,6 +31,12 @@ export interface ViewSyllable {
   syllable: string;
   isDone: boolean;
 }
+
+export type ActiveQuest = Omit<Quest, "syllables"> & {
+  word: string;
+  syllables: ViewSyllable[];
+};
+
 export type ViewActiveQuest = Omit<Quest, "syllables"> & {
   id: number;
   image: string;
@@ -40,5 +46,6 @@ export type ViewActiveQuest = Omit<Quest, "syllables"> & {
 };
 export interface QuestState {
   list: Quest[];
-  activeQuestId: number | null;
+
+    activeQuest: ActiveQuest | null;
 }
