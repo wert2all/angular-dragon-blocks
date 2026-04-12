@@ -5,14 +5,14 @@ export const quests: Quest[] = [
     id: 1,
     image: "/assets/quests/quest-1.png",
     syllables: ["ма", "ма"],
-    isDone: true,
-    position: { x: 30, y: 25 },
+    isDone: false,
+    position: { x: 10, y: 85 },
   },
   {
     id: 2,
     image: "/assets/quests/quest-1.png",
     syllables: ["та", "то"],
     isDone: false,
-    position: { x: 65, y: 40 },
+    position: { x: 17, y: 78 },
   },
 ];
