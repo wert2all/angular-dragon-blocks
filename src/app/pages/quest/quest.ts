@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Syllabes } from "../../features/syllables/syllables";
+import { TaskComponent } from "../../features/quest-task/quest-task";
 
 @Component({
   selector: "app-quest",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Syllabes],
+  imports: [Syllabes, TaskComponent],
   templateUrl: "./quest.html",
 })
 export class Quest {

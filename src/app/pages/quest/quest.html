@@ -1,5 +1,6 @@
-<section class="min-h-screen bg-warm-cream p-6">
+<section class="bg-warm-cream p-6">
   <h1 class="mb-4 text-3xl font-bold text-deep-purple">Quest {{ questId }}</h1>
-  <p class="text-soft-teal">Your adventure awaits!</p>
+  <app-quest-task [taskId]="1" />
+  <div class="my-6 block"></div>
   <app-syllables word="машинка" [fakeCount]="3" />
 </section>
