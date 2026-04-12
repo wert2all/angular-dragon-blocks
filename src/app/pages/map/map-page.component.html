@@ -1,4 +1,4 @@
-<div class="inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
+<div class="mt-6 inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
   <div
     class="relative items-center justify-center"
     (click)="onMapClick()"
@@ -11,7 +11,6 @@
       <app-quest-marker [quest]="quest" (markerClick)="onMarkerClick($event)" />
     }
     @if (selectedQuest()) {
-      <
       <app-map-detail-window [quest]="selectedQuest()" (closeChange)="closeDetail()" />
     }
   </div>

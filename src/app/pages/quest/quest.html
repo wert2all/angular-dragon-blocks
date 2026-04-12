@@ -1,8 +1,6 @@
-<div class="inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
+<div class="mt-6 inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
   <div class="items-center justify-center">
-    <h1 class="mb-4 text-3xl font-bold text-deep-purple">Quest {{ questId }}</h1>
-
-    <app-quest-task [taskId]="questId" />
+    <app-quest-task [quest]="activeQuest()" />
     <div class="my-6 block"></div>
     <app-syllables word="машинка" [fakeCount]="3" />
   </div>

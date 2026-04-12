@@ -1,13 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  input,
-} from "@angular/core";
-import { Store } from "@ngrx/store";
-import { questFeature } from "../../store/quest.feature";
+import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 import { QuestDetails } from "../details/details";
+import { ViewActiveQuest } from "../../store/quest.types";
 
 @Component({
   selector: "app-quest-task",
@@ -16,13 +9,5 @@ import { QuestDetails } from "../details/details";
   templateUrl: "./task.html",
 })
 export class TaskComponent {
-  private store = inject(Store);
-  taskId = input.required<number>();
-
-  protected all = this.store.selectSignal(questFeature.selectKidQuests);
-
-  protected quest = computed(() => {
-    const questId = this.taskId();
-    return this.all().quests.filter((quest) => quest.id == questId)[0];
-  });
+  quest = input.required<ViewActiveQuest | null>();
 }
