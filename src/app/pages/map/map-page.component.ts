@@ -6,9 +6,9 @@ import {
 } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { questFeature } from "../../features/quest/store/quest.feature";
-import { QuestMarkerComponent } from "../../features/quest/components/quest-marker/marker.component";
 import { QuestDetailComponent } from "./components/quest-detail/quest-detail.component";
 import { ViewQuestMarker } from "../../features/quest/store/quest.types";
+import { QuestMarkerComponent } from "../../features/map/components/marker.component";
 @Component({
   selector: "app-map-page",
   changeDetection: ChangeDetectionStrategy.OnPush,
