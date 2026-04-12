@@ -27,6 +27,10 @@ export interface ViewMap {
   quests: ViewQuestMarker[];
 }
 
+export type ViewActiveQuest = Quest & {
+  word: string;
+};
 export interface QuestState {
   list: Quest[];
+  activeQuestId: number | null;
 }

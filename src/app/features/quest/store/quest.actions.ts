@@ -1,6 +1,8 @@
-import { createActionGroup } from "@ngrx/store";
+import { createActionGroup, props } from "@ngrx/store";
 
 export const QuestActions = createActionGroup({
   source: "quest",
-  events: {},
+  events: {
+    "set active quest": props<{ questId: number }>(),
+  },
 });
