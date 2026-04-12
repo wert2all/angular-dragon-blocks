@@ -1,6 +1,10 @@
-import { ChangeDetectionStrategy, Component, input } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from "@angular/core";
 import { ViewQuestMarker } from "../../store/quest.types";
-
 @Component({
   selector: "app-quest-marker",
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,4 +12,8 @@ import { ViewQuestMarker } from "../../store/quest.types";
 })
 export class QuestMarkerComponent {
   readonly quest = input.required<ViewQuestMarker>();
+  readonly markerClick = output<{ quest: ViewQuestMarker; event: Event }>();
+  onClick(event: Event) {
+    this.markerClick.emit({ quest: this.quest(), event });
+  }
 }

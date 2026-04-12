@@ -3,17 +3,12 @@
     class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
     [style.left.%]="quest().position.x"
     [style.top.%]="quest().position.y"
-  >
+    (click)="onClick($event)">
     <div
       class="h-14 w-14 rounded-2xl border-4 border-soft-teal transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[0_0_20px_rgba(171,218,220,0.6)]"
-      [style.background-color]="quest().isDone ? 'var(--color-deep-purple)' : 'var(--color-vibrant-orange)'"
-    >
+      [style.background-color]="quest().isDone ? 'var(--color-deep-purple)' : 'var(--color-vibrant-orange)'">
       <div class="relative flex h-full w-full items-center justify-center p-1">
-        <img
-          [src]="quest().image"
-          [alt]="quest().word"
-          class="h-full w-full rounded-lg object-cover object-center"
-        />
+        <img [src]="quest().image" [alt]="quest().word" class="h-full w-full rounded-lg object-cover object-center" />
         @if (quest().isDone) {
           <div class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-soft-teal">
             <span class="text-[8px] font-bold text-deep-purple">✓</span>
