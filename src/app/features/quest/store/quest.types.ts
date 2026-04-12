@@ -5,6 +5,10 @@ export type Quest = {
   isDone: boolean;
 };
 
+export type WithWordQuest = Quest & {
+  word: string;
+};
+
 export type QuestState = {
   list: Quest[];
 };
