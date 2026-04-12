@@ -1,9 +1,9 @@
-import { Component, input, output } from "@angular/core";
-import { NgIcon } from "@ng-icons/core";
+import { Component, input, output } from '@angular/core';
+import { NgIcon } from '@ng-icons/core';
 
 @Component({
-  selector: "app-volume-toggler",
-  templateUrl: "./volume-toggler.html",
+  selector: 'app-volume-toggler',
+  templateUrl: './volume-toggler.html',
   imports: [NgIcon],
 })
 export class VolumeToggler {

@@ -1,9 +1,9 @@
-import { Component, input } from "@angular/core";
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-lego-brick',
   templateUrl: './lego-brick.html',
-  styleUrl: './lego-brick.css'
+  styleUrl: './lego-brick.css',
 })
 export class LegoBrick {
   value = input.required<string>();

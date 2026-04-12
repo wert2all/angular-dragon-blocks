@@ -1,19 +1,13 @@
-import type { ViewQuestMarker } from "../../../../features/quest/store/quest.types";
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-  output,
-} from "@angular/core";
-import { Router } from "@angular/router";
-import { QuestDetails } from "../../../../features/quest/components/details/details";
+import type { ViewQuestMarker } from '../../../../features/quest/store/quest.types';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import { Router } from '@angular/router';
+import { QuestDetails } from '../../../../features/quest/components/details/details';
 
 @Component({
-  selector: "app-map-detail-window",
+  selector: 'app-map-detail-window',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: "./detail-window.component.html",
-  styleUrl: "./detail-window.component.css",
+  templateUrl: './detail-window.component.html',
+  styleUrl: './detail-window.component.css',
   imports: [QuestDetails],
 })
 export class MapDetailWindowComponent {
@@ -24,7 +18,7 @@ export class MapDetailWindowComponent {
   onWordClick() {
     const q = this.quest();
     if (q) {
-      this.router.navigate(["/quest", q.id]);
+      this.router.navigate(['/quest', q.id]);
     }
   }
 }

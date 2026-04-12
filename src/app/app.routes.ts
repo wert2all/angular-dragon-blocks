@@ -4,10 +4,10 @@ export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'map' },
   {
     path: 'map',
-    loadComponent: () => import('./pages/map/map-page.component').then((m) => m.MapPageComponent),
+    loadComponent: () => import('./pages/map/map-page.component').then(m => m.MapPageComponent),
   },
   {
     path: 'quest/:id',
-    loadComponent: () => import('./pages/quest/quest').then((m) => m.Quest),
+    loadComponent: () => import('./pages/quest/quest').then(m => m.Quest),
   },
 ];

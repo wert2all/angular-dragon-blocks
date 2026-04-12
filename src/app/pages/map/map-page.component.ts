@@ -1,19 +1,14 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  signal,
-} from "@angular/core";
-import { Store } from "@ngrx/store";
-import { questFeature } from "../../features/quest/store/quest.feature";
-import { ViewQuestMarker } from "../../features/quest/store/quest.types";
-import { QuestMarkerComponent } from "../../features/map/components/marker/marker.component";
-import { MapDetailWindowComponent } from "../../features/map/components/detail-window/detail-window.component";
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { questFeature } from '../../features/quest/store/quest.feature';
+import { ViewQuestMarker } from '../../features/quest/store/quest.types';
+import { QuestMarkerComponent } from '../../features/map/components/marker/marker.component';
+import { MapDetailWindowComponent } from '../../features/map/components/detail-window/detail-window.component';
 
 @Component({
-  selector: "app-map-page",
+  selector: 'app-map-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: "./map-page.component.html",
+  templateUrl: './map-page.component.html',
   imports: [QuestMarkerComponent, MapDetailWindowComponent],
 })
 export class MapPageComponent {

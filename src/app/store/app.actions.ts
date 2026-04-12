@@ -1,8 +1,8 @@
-import { createActionGroup, emptyProps } from "@ngrx/store";
+import { createActionGroup, emptyProps } from '@ngrx/store';
 
 export const AppActions = createActionGroup({
-  source: "app",
+  source: 'app',
   events: {
-    "toggle sound": emptyProps(),
+    'toggle sound': emptyProps(),
   },
 });

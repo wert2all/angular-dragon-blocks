@@ -1,6 +1,1 @@
-**/*.json
-**/*.js
-**/*.mjs
-**/*.ts
-**/*.css
 pnpm-lock.yaml
