@@ -1,0 +1,10 @@
+<div class="flex flex-wrap justify-center gap-4">
+  @for (syllable of syllables(); track syllable.syllable) {
+    <div
+      class="flex h-48 w-48 items-center justify-center rounded-lg border-2 border-dashed border-deep-purple bg-warm-cream shadow-md">
+      @if (syllable.isDone) {
+        <span class="text-2xl font-bold text-deep-purple">{{ syllable.syllable }}</span>
+      }
+    </div>
+  }
+</div>
