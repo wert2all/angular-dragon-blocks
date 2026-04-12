@@ -1,16 +1,15 @@
-import { createFeature, createReducer, createSelector } from "@ngrx/store";
+import { createFeature, createReducer } from "@ngrx/store";
 import { QuestState } from "./quest.types";
+import { quests } from "./quest.store";
 
 const initState: QuestState = {
-  isLoading: false,
+  list: quests,
 };
 
 export const questFeature = createFeature({
   name: "quest",
   reducer: createReducer(initState),
-  extraSelectors: ({ selectIsLoading }) => {
-    return {
-      isLoading: createSelector(selectIsLoading, (isLoading) => isLoading),
-    };
+  extraSelectors: ({ }) => {
+    return {};
   },
 });
