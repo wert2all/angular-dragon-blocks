@@ -2,6 +2,8 @@
   <div class="items-center justify-center">
     <app-quest-task [quest]="activeQuest()" />
     <div class="my-6 block"></div>
-    <app-syllables word="машинка" [fakeCount]="3" />
+    @if (activeQuest(); as activeQuest) {
+      <app-syllables [syllables]="activeQuest.syllables" [fakeCount]="activeQuest.fakeSyllables" />
+    }
   </div>
 </div>

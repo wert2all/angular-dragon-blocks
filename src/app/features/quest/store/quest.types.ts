@@ -9,6 +9,7 @@ export interface Quest {
   syllables: string[];
   isDone: boolean;
   position: MarkerPosition;
+  fakeSyllables: number;
 }
 
 export type WithWordQuest = Quest & {

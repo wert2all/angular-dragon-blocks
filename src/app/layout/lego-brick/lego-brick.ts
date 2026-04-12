@@ -1,5 +1,7 @@
 import { Component, input } from '@angular/core';
 
+export type BrickColor = 'lego-deep-purple' | 'lego-soft-teal' | 'lego-vibrant-orange';
+
 @Component({
   selector: 'app-lego-brick',
   templateUrl: './lego-brick.html',
@@ -12,7 +14,7 @@ export class LegoBrick {
    * CSS class for the brick color (from app palette).
    * Options: 'lego-deep-purple' (default), 'lego-soft-teal', 'lego-vibrant-orange'
    */
-  colorClass = input<string>('lego-deep-purple');
+  colorClass = input<BrickColor>('lego-deep-purple');
 
   /**
    * Optional size variant.

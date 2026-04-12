@@ -7,6 +7,7 @@ export const quests: Quest[] = [
     syllables: ['ма', 'ма'],
     isDone: false,
     position: { x: 10, y: 85 },
+    fakeSyllables: 1,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const quests: Quest[] = [
     syllables: ['та', 'то'],
     isDone: false,
     position: { x: 17, y: 78 },
+    fakeSyllables: 1,
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ export const quests: Quest[] = [
     syllables: ['да', 'вид'],
     isDone: false,
     position: { x: 23, y: 70 },
+    fakeSyllables: 1,
   },
   {
     id: 4,
@@ -28,5 +31,6 @@ export const quests: Quest[] = [
     syllables: ['сир'],
     isDone: false,
     position: { x: 26, y: 67 },
+    fakeSyllables: 1,
   },
 ];
