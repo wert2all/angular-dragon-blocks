@@ -1,13 +1,20 @@
-import { ChangeDetectionStrategy, Component, input } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from "@angular/core";
 import { QuestDetails } from "../details/details";
 import { ViewActiveQuest } from "../../store/quest.types";
+import { QuestSyllablesComponent } from "../syllables/syllables";
 
 @Component({
   selector: "app-quest-task",
-  imports: [QuestDetails],
+  imports: [QuestDetails, QuestSyllablesComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./task.html",
 })
 export class TaskComponent {
-  quest = input.required<ViewActiveQuest | null>();
+  readonly quest = input.required<ViewActiveQuest | null>();
+  readonly syllables = computed(() => this.quest()?.syllables || []);
 }

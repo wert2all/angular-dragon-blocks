@@ -1,5 +1,10 @@
 import { createFeature, createReducer, createSelector, on } from "@ngrx/store";
-import { Quest, QuestState, ViewActiveQuest, ViewMap } from "./quest.types";
+import {
+  Quest,
+  QuestState,
+  ViewActiveQuest,
+  ViewMap,
+} from "./quest.types";
 import { quests } from "./quest.store";
 import { QuestActions } from "./quest.actions";
 
@@ -43,6 +48,10 @@ export const questFeature = createFeature({
           ? {
             ...activeQuest,
             word: getWord(activeQuest),
+            syllables: activeQuest.syllables.map((syllable) => ({
+              syllable: syllable,
+              isDone: false,
+            })),
           }
           : null;
       },

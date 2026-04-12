@@ -27,8 +27,16 @@ export interface ViewMap {
   quests: ViewQuestMarker[];
 }
 
-export type ViewActiveQuest = Quest & {
+export interface ViewSyllable {
+  syllable: string;
+  isDone: boolean;
+}
+export type ViewActiveQuest = Omit<Quest, "syllables"> & {
+  id: number;
+  image: string;
+  isDone: boolean;
   word: string;
+  syllables: ViewSyllable[];
 };
 export interface QuestState {
   list: Quest[];
