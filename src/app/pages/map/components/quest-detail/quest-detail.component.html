@@ -1,0 +1,30 @@
+@if (quest()) {
+  <div
+    class="quest-detail-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+    (click)="close.emit()">
+    <div
+      class="quest-detail-container relative flex max-w-2xl flex-col items-center gap-6 rounded-3xl border-4 border-soft-teal bg-warm-cream p-6 shadow-2xl"
+      (click)="$event.stopPropagation()">
+      <button
+        (click)="close.emit()"
+        class="absolute top-2 right-2 flex h-6 w-6 items-center justify-center rounded-full bg-vibrant-orange text-sm text-white transition-colors duration-200 hover:bg-orange-600">
+        ✕
+      </button>
+
+      <img
+        [src]="quest()!.image"
+        [alt]="quest()!.word"
+        class="max-h-96 w-auto rounded-2xl border-3 border-soft-teal object-contain" />
+
+      <button
+        (click)="onWordClick()"
+        class="w-full rounded-xl bg-deep-purple py-3 text-xl font-bold tracking-widest text-white uppercase transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
+        [class.bg-deep-purple]="!quest()!.isDone"
+        [class.bg-soft-teal]="quest()!.isDone"
+        [class.text-white]="!quest()!.isDone"
+        [class.text-deep-purple]="quest()!.isDone">
+        {{ quest()!.word }}
+      </button>
+    </div>
+  </div>
+}
