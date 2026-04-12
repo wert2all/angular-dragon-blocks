@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { questFeature } from "../../features/quest/store/quest.feature";
 
 @Component({
   selector: "app-map-page",
@@ -8,6 +10,8 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
         Dragon's World Map
       </h1>
   `,
-  styles: [``],
 })
-export class MapPageComponent { }
+export class MapPageComponent {
+  private store = inject(Store);
+  protected quests = this.store.selectSignal(questFeature.selectKidQuests)
+}

@@ -1,6 +1,8 @@
-import { createFeature, createReducer } from "@ngrx/store";
-import { QuestState } from "./quest.types";
+import { createFeature, createReducer, createSelector } from "@ngrx/store";
+import { Quest, QuestState, WithWordQuest } from "./quest.types";
 import { quests } from "./quest.store";
+
+const getWord = (quest: Quest) => quest.syllables.join("");
 
 const initState: QuestState = {
   list: quests,
@@ -9,7 +11,12 @@ const initState: QuestState = {
 export const questFeature = createFeature({
   name: "quest",
   reducer: createReducer(initState),
-  extraSelectors: ({ }) => {
-    return {};
+  extraSelectors: ({ selectList }) => {
+    const selectKidQuests = createSelector(selectList, (all): WithWordQuest[] =>
+      all.map((quest) => ({ ...quest, word: getWord(quest) })),
+    );
+    return {
+      selectKidQuests,
+    };
   },
 });
