@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 export type BrickColor = 'lego-deep-purple' | 'lego-soft-teal' | 'lego-vibrant-orange';
 
@@ -23,9 +23,21 @@ export class LegoBrick {
   size = input<'small' | 'normal' | 'large'>('normal');
 
   /**
+   * Whether the brick should shake (for incorrect/fake syllables)
+   */
+  shake = input<boolean>(false);
+
+  click = output<string>();
+
+  /**
    * Returns the full class string combining base classes with color class
    */
   get classes(): string {
-    return `lego-brick group ${this.colorClass()}`;
+    const shakeClass = this.shake() ? ' shake' : '';
+    return `lego-brick group ${this.colorClass()}${shakeClass}`;
+  }
+
+  onClick(): void {
+    this.click.emit(this.value());
   }
 }
