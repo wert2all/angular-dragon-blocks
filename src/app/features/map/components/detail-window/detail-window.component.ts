@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 import { QuestDetails } from "../../../../features/quest/components/details/details";
 
 @Component({
-  selector: "app-quest-detail",
+  selector: "app-map-detail-window",
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: "./detail-window.component.html",
   styleUrl: "./detail-window.component.css",
