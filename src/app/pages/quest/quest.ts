@@ -4,13 +4,13 @@ import { Store } from '@ngrx/store';
 import { TaskComponent } from '../../features/quest/components/task/task';
 import { QuestActions } from '../../features/quest/store/quest.actions';
 import { questFeature } from '../../features/quest/store/quest.feature';
-import { Syllabes } from '../../features/syllables/syllables';
+import { Syllables } from '../../features/syllables/syllables';
 import { BrickColor } from '../../layout/lego-brick/lego-brick';
 
 @Component({
   selector: 'app-quest',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Syllabes, TaskComponent],
+  imports: [Syllables, TaskComponent],
   templateUrl: './quest.html',
 })
 export class Quest {

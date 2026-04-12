@@ -14,12 +14,11 @@ const SYLLABLE_COLORS: BrickColor[] = ['lego-deep-purple', 'lego-soft-teal', 'le
   templateUrl: './syllables.html',
   imports: [LegoBrick],
 })
-export class Syllabes {
+export class Syllables {
   syllables = input.required<ViewSyllable[]>();
   fakeCount = input<number>(0);
   correctSyllable = output<{ syllable: string; color: BrickColor }>();
 
-  /** Track which syllables are currently shaking */
   private shakingSyllables = signal<Set<string>>(new Set());
 
   protected syllablesWithFakes = computed((): SyllableItem[] => {
@@ -32,38 +31,30 @@ export class Syllabes {
     }));
   });
 
-  /**
-   * Check if a syllable is currently shaking
-   */
   protected isShaking(syllable: string): boolean {
     return this.shakingSyllables().has(syllable);
   }
 
-  /**
-   * Handle syllable click - shake if fake, do nothing if real
-   */
   protected onSyllableClick(event: SyllableItem): void {
     const item = this.syllables().find(s => s.syllable === event.value);
     if (!item) {
-      // Add to shaking set
-      this.shakingSyllables.update(set => {
-        const newSet = new Set(set);
-        newSet.add(event.value);
-        return newSet;
-      });
-
-      // Remove from shaking set after animation completes
-      setTimeout(() => {
-        this.shakingSyllables.update(set => {
-          const newSet = new Set(set);
-          newSet.delete(event.value);
-          return newSet;
-        });
-      }, 500);
-    } else {
-      this.correctSyllable.emit({ syllable: item.syllable, color: event.colorClass });
+      this.addShakingSyllable(event.value);
+      setTimeout(() => this.removeShakingSyllable(event.value), 500);
+      return;
     }
-    // If real syllable, do nothing (will be handled elsewhere)
+    this.correctSyllable.emit({ syllable: item.syllable, color: event.colorClass });
+  }
+
+  private addShakingSyllable(value: string): void {
+    this.shakingSyllables.update(set => new Set([...set, value]));
+  }
+
+  private removeShakingSyllable(value: string): void {
+    this.shakingSyllables.update(set => {
+      const newSet = new Set(set);
+      newSet.delete(value);
+      return newSet;
+    });
   }
 
   private getRandomColor(): BrickColor {
@@ -80,19 +71,28 @@ export class Syllabes {
     return shuffled;
   }
 
-  private generateFakeSyllables(realSyllable: string[], count: number): string[] {
+  private generateFakeSyllables(realSyllables: string[], count: number): string[] {
     const fakes: string[] = [];
     const consonants = 'бвгджзйклмнпрстфхцчшщ';
     const vowels = 'аеиоуяюєїі';
+
     while (fakes.length < count) {
-      const useConsonant = Math.random() > 0.3;
-      const syllable = useConsonant
-        ? consonants[Math.floor(Math.random() * consonants.length)] + vowels[Math.floor(Math.random() * vowels.length)]
-        : vowels[Math.floor(Math.random() * vowels.length)] + consonants[Math.floor(Math.random() * consonants.length)];
-      if (!realSyllable.includes(syllable) && !fakes.includes(syllable)) {
+      const syllable = this.generateRandomSyllable(consonants, vowels);
+      if (!realSyllables.includes(syllable) && !fakes.includes(syllable)) {
         fakes.push(syllable);
       }
     }
     return fakes;
+  }
+
+  private generateRandomSyllable(consonants: string, vowels: string): string {
+    const randomConsonant = (): string => consonants[Math.floor(Math.random() * consonants.length)];
+    const randomVowel = (): string => vowels[Math.floor(Math.random() * vowels.length)];
+
+    const useConsonantFirst = Math.random() > 0.3;
+    if (useConsonantFirst) {
+      return randomConsonant() + randomVowel();
+    }
+    return randomVowel() + randomConsonant();
   }
 }

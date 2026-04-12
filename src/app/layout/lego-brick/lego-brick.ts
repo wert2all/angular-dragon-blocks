@@ -27,7 +27,7 @@ export class LegoBrick {
    */
   shake = input<boolean>(false);
 
-  click = output<string>();
+  brickClick = output<string>();
 
   /**
    * Returns the full class string combining base classes with color class
@@ -38,6 +38,6 @@ export class LegoBrick {
   }
 
   onClick(): void {
-    this.click.emit(this.value());
+    this.brickClick.emit(this.value());
   }
 }
