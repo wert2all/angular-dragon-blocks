@@ -14,14 +14,38 @@ import { CongratsModalComponent } from '../../features/celebration/congrats-moda
   imports: [Syllables, TaskComponent, CongratsModalComponent],
   templateUrl: './quest.html',
 })
-export class Quest {
+export class QuestPage {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly store = inject(Store);
+
   protected readonly activeQuest = this.store.selectSignal(questFeature.selectActiveQuest);
   protected readonly activeTaskQuest = this.store.selectSignal(questFeature.selectTaskQuest);
-
+  protected readonly allQuests = this.store.selectSignal(questFeature.selectList);
   protected readonly showCongrats = signal(false);
+
+  protected readonly navigation = computed(() => {
+    const quests = this.allQuests();
+    const current = this.activeQuest();
+    if (!current || quests.length === 0) {
+      return {
+        hasPrev: false,
+        hasNext: false,
+        prevId: null as number | null,
+        nextId: null as number | null,
+      };
+    }
+    const sorted = [...quests].sort((a, b) => a.id - b.id);
+    const currentIndex = sorted.findIndex(q => q.id === current.id);
+    const hasPrev = currentIndex > 0;
+    const hasNext = currentIndex >= 0 && currentIndex < sorted.length - 1;
+    return {
+      hasPrev,
+      hasNext,
+      prevId: hasPrev ? sorted[currentIndex - 1].id : null,
+      nextId: hasNext ? sorted[currentIndex + 1].id : null,
+    };
+  });
 
   protected readonly isQuestComplete = computed(() => {
     const quest = this.activeQuest();
@@ -38,7 +62,6 @@ export class Quest {
 
   protected setDone(item: ViewSyllable): void {
     this.store.dispatch(QuestActions.setDoneSyllable({ id: item.id }));
-
     // Check if this was the last syllable
     const quest = this.activeQuest();
     if (quest) {
@@ -52,6 +75,11 @@ export class Quest {
 
   protected onCloseCongrats(): void {
     this.showCongrats.set(false);
+  }
+
+  protected navigateToQuest(questId: number): void {
+    this.router.navigate(['/quest', questId]);
+    this.store.dispatch(QuestActions.setActiveQuest({ questId }));
   }
 
   protected onContinueToMap(): void {
