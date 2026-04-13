@@ -20,13 +20,17 @@ export class Syllables {
   }
 
   protected onSyllableClick(event: ViewSyllableForShow): void {
-    const item = this.syllables().filter(s => s.isReal && !s.isDone)[0];
-    if (item?.syllable !== event.syllable) {
+    // Find the first incomplete correct syllable that matches the clicked text
+    const firstIncompleteMatch = this.syllables()
+      .filter(s => s.isReal && !s.isDone)
+      .find(s => s.syllable === event.syllable);
+
+    if (!firstIncompleteMatch) {
       this.addShakingSyllable(event.syllable);
       setTimeout(() => this.removeShakingSyllable(event.syllable), 500);
       return;
     }
-    this.correctSyllable.emit(item);
+    this.correctSyllable.emit(firstIncompleteMatch);
   }
 
   private addShakingSyllable(value: string): void {

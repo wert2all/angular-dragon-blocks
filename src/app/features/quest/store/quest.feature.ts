@@ -10,12 +10,14 @@ function getWord(quest: Quest): string {
 
 const getRandomColor = (): BrickColor => {
   const SYLLABLE_COLORS: BrickColor[] = ['lego-deep-purple', 'lego-soft-teal', 'lego-vibrant-orange'];
-
   const index = Math.floor(Math.random() * SYLLABLE_COLORS.length);
   return SYLLABLE_COLORS[index];
 };
 
+const generateId = (): string => crypto.randomUUID();
+
 const getViewSyllable = (value: string, isReal: boolean): ViewSyllable => ({
+  id: generateId(),
   syllable: value,
   isDone: false,
   color: getRandomColor(),
@@ -34,7 +36,6 @@ function shuffleArray<T>(array: T[]): T[] {
 function generateRandomSyllable(consonants: string, vowels: string): string {
   const randomConsonant = (): string => consonants[Math.floor(Math.random() * consonants.length)];
   const randomVowel = (): string => vowels[Math.floor(Math.random() * vowels.length)];
-
   const useConsonantFirst = Math.random() > 0.3;
   if (useConsonantFirst) {
     return randomConsonant() + randomVowel();
@@ -46,7 +47,6 @@ function generateFakeSyllables(realSyllables: string[], count: number): string[]
   const fakes: string[] = [];
   const consonants = 'бвгджзйклмнпрстфхцчшщ';
   const vowels = 'аеиоуяюєїі';
-
   while (fakes.length < count) {
     const syllable = generateRandomSyllable(consonants, vowels);
     if (!realSyllables.includes(syllable) && !fakes.includes(syllable)) {
@@ -56,11 +56,13 @@ function generateFakeSyllables(realSyllables: string[], count: number): string[]
   return fakes;
 }
 
-const makeSyllablesForQuest = (quest: Quest): ViewSyllable[] =>
-  shuffleArray([
-    ...quest.syllables.map(syllable => getViewSyllable(syllable, true)),
-    ...generateFakeSyllables(quest.syllables, quest.fakeSyllables).map(syllable => getViewSyllable(syllable, false)),
-  ]);
+const makeSyllablesForQuest = (quest: Quest): ViewSyllable[] => {
+  const realSyllables = quest.syllables.map(syllable => getViewSyllable(syllable, true));
+  const fakeSyllables = generateFakeSyllables(quest.syllables, quest.fakeSyllables).map(syllable =>
+    getViewSyllable(syllable, false)
+  );
+  return shuffleArray([...realSyllables, ...fakeSyllables]);
+};
 
 const initState: QuestState = {
   list: quests,
@@ -71,13 +73,11 @@ export const questFeature = createFeature({
   name: 'quest',
   reducer: createReducer(
     initState,
-
     on(QuestActions.setActiveQuest, (state, { questId }): QuestState => {
       const foundQuest = state.list.find(quest => quest.id === questId);
       if (!foundQuest) {
         return { ...state, activeQuest: null };
       }
-
       return {
         ...state,
         activeQuest: {
@@ -88,23 +88,21 @@ export const questFeature = createFeature({
         },
       };
     }),
-
-    on(QuestActions.setDoneSyllable, (state, { syllable }): QuestState => {
+    on(QuestActions.setDoneSyllable, (state, { id }): QuestState => {
       if (!state.activeQuest) {
         return state;
       }
-
+      // Mark only the specific syllable instance by id
       return {
         ...state,
         activeQuest: {
           ...state.activeQuest,
           correctSyllables: state.activeQuest.correctSyllables.map(syl =>
-            syl.syllable === syllable ? { ...syl, isDone: true } : syl
+            syl.id === id ? { ...syl, isDone: true } : syl
           ),
         },
       };
     }),
-
     on(
       QuestActions.completeQuest,
       (state, { questId }): QuestState => ({
@@ -116,7 +114,6 @@ export const questFeature = createFeature({
       })
     )
   ),
-
   extraSelectors: ({ selectList, selectActiveQuest }) => ({
     selectKidQuests: createSelector(
       selectList,

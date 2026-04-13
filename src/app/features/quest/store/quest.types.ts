@@ -31,6 +31,7 @@ export interface ViewMap {
 }
 
 export interface ViewSyllable {
+  id: string;
   syllable: string;
   color: BrickColor;
   isDone: boolean;
