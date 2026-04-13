@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 
 @Component({
-  selector: 'app-map-detail-window',
+  selector: 'app-modal-window',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './detail-window.component.html',
-  styleUrl: './detail-window.component.css',
+  templateUrl: './modal-window.component.html',
+  styleUrl: './modal-window.component.css',
 })
-export class MapDetailWindowComponent {
+export class ModalWindowComponent {
   readonly closeWindow = output<void>();
 }
