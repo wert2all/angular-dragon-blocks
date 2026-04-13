@@ -32,8 +32,9 @@ export interface ViewMap {
 
 export interface ViewSyllable {
   syllable: string;
-  color: BrickColor | null;
+  color: BrickColor;
   isDone: boolean;
+  isReal: boolean;
 }
 
 export type ActiveQuest = Omit<Quest, 'syllables'> & {
