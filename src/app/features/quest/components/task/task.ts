@@ -11,5 +11,5 @@ import { QuestSyllablesComponent } from '../syllables/syllables';
 })
 export class TaskComponent {
   readonly quest = input.required<ViewActiveQuest | null>();
-  readonly syllables = computed(() => this.quest()?.syllables || []);
+  readonly syllables = computed(() => this.quest()?.syllables.filter(sylable => sylable.isReal) || []);
 }
