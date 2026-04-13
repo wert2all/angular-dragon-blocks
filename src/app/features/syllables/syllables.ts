@@ -20,17 +20,16 @@ export class Syllables {
   }
 
   protected onSyllableClick(event: ViewSyllableForShow): void {
-    // Find the first incomplete correct syllable that matches the clicked text
-    const firstIncompleteMatch = this.syllables()
-      .filter(s => s.isReal && !s.isDone)
-      .find(s => s.syllable === event.syllable);
+    // Get the first incomplete syllable (must be done in order)
+    const firstIncomplete = this.syllables().filter(s => s.isReal && !s.isDone)[0];
 
-    if (!firstIncompleteMatch) {
+    // Check if clicked syllable text matches the first incomplete one
+    if (firstIncomplete?.syllable !== event.syllable) {
       this.addShakingSyllable(event.syllable);
       setTimeout(() => this.removeShakingSyllable(event.syllable), 500);
       return;
     }
-    this.correctSyllable.emit(firstIncompleteMatch);
+    this.correctSyllable.emit(firstIncomplete);
   }
 
   private addShakingSyllable(value: string): void {
