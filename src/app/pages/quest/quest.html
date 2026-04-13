@@ -1,4 +1,4 @@
-<div class="relative flex min-h-[600px] w-[1463px] items-center justify-center">
+<div class="relative flex min-h-150 items-center justify-center">
   <!-- Previous Quest Button -->
   @if (navigation().hasPrev) {
     <button
@@ -26,7 +26,7 @@
   }
 
   <!-- Quest Content -->
-  <div class="mt-6 inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
+  <div class="mt-6 inline-block w-366 rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
     <div class="items-center justify-center">
       @if (activeTaskQuest(); as task) {
         <app-quest-task [quest]="task" />
