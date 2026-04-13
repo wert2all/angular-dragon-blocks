@@ -103,7 +103,18 @@ export const questFeature = createFeature({
           ),
         },
       };
-    })
+    }),
+
+    on(
+      QuestActions.completeQuest,
+      (state, { questId }): QuestState => ({
+        ...state,
+        list: state.list.map(quest => ({
+          ...quest,
+          isDone: quest.id === questId ? true : quest.isDone,
+        })),
+      })
+    )
   ),
 
   extraSelectors: ({ selectList, selectActiveQuest }) => ({
