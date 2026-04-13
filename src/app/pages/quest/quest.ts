@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TaskComponent } from '../../features/quest/components/task/task';
 import { QuestActions } from '../../features/quest/store/quest.actions';
@@ -16,6 +16,7 @@ import { CongratsModalComponent } from '../../features/celebration/congrats-moda
 })
 export class Quest {
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly store = inject(Store);
   protected readonly activeQuest = this.store.selectSignal(questFeature.selectActiveQuest);
   protected readonly activeTaskQuest = this.store.selectSignal(questFeature.selectTaskQuest);
@@ -51,5 +52,9 @@ export class Quest {
 
   protected onCloseCongrats(): void {
     this.showCongrats.set(false);
+  }
+
+  protected onContinueToMap(): void {
+    this.router.navigate(['/map']);
   }
 }
