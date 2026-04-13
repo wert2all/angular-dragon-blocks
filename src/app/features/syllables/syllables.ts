@@ -19,8 +19,8 @@ export class Syllables {
   }
 
   protected onSyllableClick(event: ViewSyllable): void {
-    const item = this.syllables().find(s => s.syllable === event.syllable);
-    if (!item?.isReal) {
+    const item = this.syllables().filter(s => s.isReal && !s.isDone)[0];
+    if (item.syllable !== event.syllable) {
       this.addShakingSyllable(event.syllable);
       setTimeout(() => this.removeShakingSyllable(event.syllable), 500);
       return;
