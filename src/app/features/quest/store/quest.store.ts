@@ -33,4 +33,12 @@ export const quests: Quest[] = [
     position: { x: 26, y: 67 },
     fakeSyllables: 1,
   },
+  {
+    id: 5,
+    image: '/assets/quests/quest-5.png',
+    syllables: ['ко', 'ро', 'на'],
+    isDone: false,
+    position: { x: 22, y: 60 },
+    fakeSyllables: 2,
+  },
 ];
