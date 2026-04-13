@@ -16,6 +16,16 @@ This project is an educational game application built with Angular called "Drago
 - Use `ng lint` for code quality checks
 - Follow Angular's component-based architecture patterns
 
+## Post-Implementation Tasks
+
+After completing any implementation task, ALWAYS run the following commands before finishing:
+
+- Format code: `pnpm exec prettier --write .`
+- Lint code: `pnpm ng lint`
+- Fix auto-fixable lint issues: `pnpm ng lint --fix`
+
+Ensure all formatting and linting checks pass before considering the task complete.
+
 ## TypeScript Best Practices
 
 - Use strict type checking
@@ -80,6 +90,9 @@ This project uses Tailwind CSS for styling. The application has a custom color p
 - Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
 - Use the async pipe to handle observables
 - Do not assume globals like (`new Date()`) are available.
+- **Use Tailwind CSS classes for all template styling** - avoid custom CSS in component stylesheets
+- **Use external template files** (`.html`) when template code exceeds ~5-10 lines or contains complex structure
+- Keep inline templates only for very small components (1-5 lines of template code)
 
 ## Services
 
