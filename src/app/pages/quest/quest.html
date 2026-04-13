@@ -1,10 +1,13 @@
 <div class="mt-6 inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
   <div class="items-center justify-center">
-    <app-quest-task [quest]="activeQuest()" />
-    <div class="my-6 block"></div>
+    @if (activeTaskQuest(); as task) {
+      <app-quest-task [quest]="task" />
+      <div class="my-6 block"></div>
+    }
     @if (activeQuest(); as activeQuest) {
       <app-syllables
-        [syllables]="activeQuest.syllables"
+        [syllables]="activeQuest.correctSyllables"
+        [showingSyllables]="activeQuest.syllablesForQuest"
         [fakeCount]="activeQuest.fakeSyllables"
         (correctSyllable)="setDone($event)" />
     }

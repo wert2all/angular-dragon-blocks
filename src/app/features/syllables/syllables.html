@@ -1,8 +1,8 @@
 <div class="flex justify-center">
-  @if (syllables().length > 0) {
+  @if (showingSyllables().length > 0) {
     <div
       class="inline-flex flex-wrap justify-center gap-3 rounded-lg border-2 border-dashed border-vibrant-orange p-10">
-      @for (item of syllables(); track item.syllable) {
+      @for (item of showingSyllables(); track item.syllable) {
         <app-lego-brick
           [value]="item.syllable"
           [colorClass]="item.color"

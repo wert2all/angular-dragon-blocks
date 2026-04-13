@@ -18,6 +18,7 @@ export class Quest {
   private readonly store = inject(Store);
 
   protected readonly activeQuest = this.store.selectSignal(questFeature.selectActiveQuest);
+  protected readonly activeTaskQuest = this.store.selectSignal(questFeature.selectTaskQuest);
 
   constructor() {
     const questId = Number(this.route.snapshot.paramMap.get('id') ?? '0');

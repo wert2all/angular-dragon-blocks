@@ -1,5 +1,5 @@
 import { Component, input, output, signal } from '@angular/core';
-import { ViewSyllable } from '../quest/store/quest.types';
+import { ViewSyllable, ViewSyllableForShow } from '../quest/store/quest.types';
 import { LegoBrick } from '../../layout/lego/lego-brick/lego-brick';
 
 @Component({
@@ -9,6 +9,7 @@ import { LegoBrick } from '../../layout/lego/lego-brick/lego-brick';
 })
 export class Syllables {
   syllables = input.required<ViewSyllable[]>();
+  showingSyllables = input.required<ViewSyllableForShow[]>();
   fakeCount = input<number>(0);
   correctSyllable = output<ViewSyllable>();
 
@@ -18,9 +19,9 @@ export class Syllables {
     return this.shakingSyllables().has(syllable);
   }
 
-  protected onSyllableClick(event: ViewSyllable): void {
+  protected onSyllableClick(event: ViewSyllableForShow): void {
     const item = this.syllables().filter(s => s.isReal && !s.isDone)[0];
-    if (item.syllable !== event.syllable) {
+    if (item?.syllable !== event.syllable) {
       this.addShakingSyllable(event.syllable);
       setTimeout(() => this.removeShakingSyllable(event.syllable), 500);
       return;

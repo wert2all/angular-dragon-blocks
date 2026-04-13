@@ -37,12 +37,18 @@ export interface ViewSyllable {
   isReal: boolean;
 }
 
+export interface ViewSyllableForShow {
+  syllable: string;
+  color: BrickColor;
+}
+
 export type ActiveQuest = Omit<Quest, 'syllables'> & {
   word: string;
-  syllables: ViewSyllable[];
+  correctSyllables: ViewSyllable[];
+  syllablesForQuest: ViewSyllableForShow[];
 };
 
-export type ViewActiveQuest = Omit<Quest, 'syllables'> & {
+export type ViewTaskQuest = Omit<Quest, 'syllables'> & {
   id: number;
   image: string;
   isDone: boolean;
