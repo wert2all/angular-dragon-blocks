@@ -1,10 +1,9 @@
 <div class="flex flex-wrap justify-center">
   @for (syllable of syllables(); track syllable.syllable) {
     @if (syllable.isDone) {
-      <app-lego-brick [value]="syllable.syllable" colorClass="lego-vibrant-orange" />
+      <app-lego-brick [value]="syllable.syllable" [colorClass]="syllable.color" />
     } @else {
-      <div
-        class="flex h-48 w-48 items-center justify-center rounded-lg border-2 border-dashed border-deep-purple bg-warm-cream shadow-md"></div>
+      <app-border-lego-brick colorClass="border-vibrant-orange" />
     }
   }
 </div>
