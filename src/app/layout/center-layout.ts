@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   template: `
-    <div class="flex min-h-screen items-center justify-center px-24">
+    <div class="flex min-h-screen items-start justify-center px-24">
       <ng-content />
     </div>
   `,
