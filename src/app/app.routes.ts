@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'map' },
   {
@@ -8,6 +7,6 @@ export const routes: Routes = [
   },
   {
     path: 'quest/:id',
-    loadComponent: () => import('./pages/quest/quest').then(m => m.Quest),
+    loadComponent: () => import('./pages/quest/quest').then(m => m.QuestPage),
   },
 ];

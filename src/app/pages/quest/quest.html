@@ -1,17 +1,72 @@
-<div class="mt-6 inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
-  <div class="items-center justify-center">
-    @if (activeTaskQuest(); as task) {
-      <app-quest-task [quest]="task" />
-      <div class="my-6 block"></div>
-    }
-    @if (activeQuest(); as activeQuest) {
-      <app-syllables
-        [syllables]="activeQuest.correctSyllables"
-        [showingSyllables]="activeQuest.syllablesForQuest"
-        [fakeCount]="activeQuest.fakeSyllables"
-        (correctSyllable)="setDone($event)" />
-    }
+<div class="relative flex min-h-[600px] items-center justify-center">
+  <!-- Previous Quest Button -->
+  @if (navigation().hasPrev) {
+    <button
+      type="button"
+      (click)="navigateToQuest(navigation().prevId!)"
+      class="group fixed top-1/2 left-4 z-10 -translate-y-1/2 md:absolute"
+      aria-label="Перейти до попереднього завдання">
+      <div
+        class="flex h-16 w-16 items-center justify-center rounded-2xl border-4 border-deep-purple bg-warm-cream shadow-[0_8px_0_0_#6e026f] transition-all duration-200 hover:translate-y-1 hover:shadow-[0_4px_0_0_#6e026f] active:translate-y-2 active:shadow-none md:h-20 md:w-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8 text-deep-purple transition-transform duration-200 group-hover:-translate-x-1 md:h-10 md:w-10"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </div>
+      <span
+        class="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-full bg-deep-purple px-3 py-1 text-xs font-bold whitespace-nowrap text-warm-cream opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+        Назад
+      </span>
+    </button>
+  }
+
+  <!-- Quest Content -->
+  <div class="mt-6 inline-block rounded-2xl border-4 border-vibrant-orange bg-warm-cream p-6">
+    <div class="items-center justify-center">
+      @if (activeTaskQuest(); as task) {
+        <app-quest-task [quest]="task" />
+        <div class="my-6 block"></div>
+      }
+      @if (activeQuest(); as activeQuest) {
+        <app-syllables
+          [syllables]="activeQuest.correctSyllables"
+          [showingSyllables]="activeQuest.syllablesForQuest"
+          [fakeCount]="activeQuest.fakeSyllables"
+          (correctSyllable)="setDone($event)" />
+      }
+    </div>
   </div>
+
+  <!-- Next Quest Button -->
+  @if (navigation().hasNext) {
+    <button
+      type="button"
+      (click)="navigateToQuest(navigation().nextId!)"
+      class="group fixed top-1/2 right-4 z-10 -translate-y-1/2 md:absolute"
+      aria-label="Перейти до наступного завдання">
+      <div
+        class="flex h-16 w-16 items-center justify-center rounded-2xl border-4 border-vibrant-orange bg-soft-teal shadow-[0_8px_0_0_#fa891a] transition-all duration-200 hover:translate-y-1 hover:shadow-[0_4px_0_0_#fa891a] active:translate-y-2 active:shadow-none md:h-20 md:w-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8 text-vibrant-orange transition-transform duration-200 group-hover:translate-x-1 md:h-10 md:w-10"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+      <span
+        class="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-full bg-vibrant-orange px-3 py-1 text-xs font-bold whitespace-nowrap text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+        Далі
+      </span>
+    </button>
+  }
 </div>
 
 <app-congrats-modal [isOpen]="showCongrats()" (closeModal)="onCloseCongrats()" (continue)="onContinueToMap()" />
