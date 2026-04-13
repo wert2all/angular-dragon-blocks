@@ -1,6 +1,6 @@
 import { Component, input, output, signal } from '@angular/core';
-import { LegoBrick } from '../../layout/lego-brick/lego-brick';
 import { ViewSyllable } from '../quest/store/quest.types';
+import { LegoBrick } from '../../layout/lego/lego-brick/lego-brick';
 
 @Component({
   selector: 'app-syllables',

@@ -1,4 +1,4 @@
-import { BrickColor } from '../../../layout/lego-brick/lego-brick';
+import { BrickColor } from '../../../layout/lego/lego-brick/lego-brick';
 
 export interface MarkerPosition {
   x: number;

@@ -2,7 +2,7 @@ import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { QuestActions } from './quest.actions';
 import { quests } from './quest.store';
 import { Quest, QuestState, ViewMap, ViewSyllable } from './quest.types';
-import { BrickColor } from '../../../layout/lego-brick/lego-brick';
+import { BrickColor } from '../../../layout/lego/lego-brick/lego-brick';
 
 function getWord(quest: Quest): string {
   return quest.syllables.join('');
