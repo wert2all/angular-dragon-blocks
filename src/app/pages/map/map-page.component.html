@@ -11,9 +11,9 @@
       <app-quest-marker [quest]="quest" (markerClick)="onMarkerClick($event)" />
     }
     @if (selectedQuest()) {
-      <app-map-detail-window (closeWindow)="closeDetail()">
+      <app-modal-window (closeWindow)="closeDetail()">
         <app-quest-details [quest]="selectedQuest()" [isSmall]="true" />
-      </app-map-detail-window>
+      </app-modal-window>
     }
   </div>
 </div>

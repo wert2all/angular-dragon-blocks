@@ -3,14 +3,14 @@ import { Store } from '@ngrx/store';
 import { questFeature } from '../../features/quest/store/quest.feature';
 import { ViewQuestMarker } from '../../features/quest/store/quest.types';
 import { QuestMarkerComponent } from '../../features/map/components/marker/marker.component';
-import { MapDetailWindowComponent } from '../../features/map/components/detail-window/detail-window.component';
 import { QuestDetails } from '../../features/quest/components/details/details';
+import { ModalWindowComponent } from '../../layout/modal-window/modal-window.component';
 
 @Component({
   selector: 'app-map-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './map-page.component.html',
-  imports: [QuestMarkerComponent, MapDetailWindowComponent, QuestDetails],
+  imports: [QuestMarkerComponent, QuestDetails, ModalWindowComponent],
 })
 export class MapPageComponent {
   private store = inject(Store);
