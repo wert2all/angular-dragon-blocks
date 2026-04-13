@@ -1,7 +1,7 @@
 import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { QuestActions } from './quest.actions';
 import { quests } from './quest.store';
-import { Quest, QuestState, ViewMap, ViewSyllable } from './quest.types';
+import { Quest, QuestState, ViewMap, ViewSyllable, ViewTaskQuest } from './quest.types';
 import { BrickColor } from '../../../layout/lego/lego-brick/lego-brick';
 
 function getWord(quest: Quest): string {
@@ -56,7 +56,7 @@ function generateFakeSyllables(realSyllables: string[], count: number): string[]
   return fakes;
 }
 
-const makeSyllables = (quest: Quest): ViewSyllable[] =>
+const makeSyllablesForQuest = (quest: Quest): ViewSyllable[] =>
   shuffleArray([
     ...quest.syllables.map(syllable => getViewSyllable(syllable, true)),
     ...generateFakeSyllables(quest.syllables, quest.fakeSyllables).map(syllable => getViewSyllable(syllable, false)),
@@ -83,7 +83,8 @@ export const questFeature = createFeature({
         activeQuest: {
           ...foundQuest,
           word: getWord(foundQuest),
-          syllables: makeSyllables(foundQuest),
+          correctSyllables: foundQuest.syllables.map(syllable => getViewSyllable(syllable, true)),
+          syllablesForQuest: makeSyllablesForQuest(foundQuest),
         },
       };
     }),
@@ -97,7 +98,7 @@ export const questFeature = createFeature({
         ...state,
         activeQuest: {
           ...state.activeQuest,
-          syllables: state.activeQuest.syllables.map(syl =>
+          correctSyllables: state.activeQuest.correctSyllables.map(syl =>
             syl.syllable === syllable ? { ...syl, isDone: true } : syl
           ),
         },
@@ -105,12 +106,15 @@ export const questFeature = createFeature({
     })
   ),
 
-  extraSelectors: ({ selectList }) => ({
+  extraSelectors: ({ selectList, selectActiveQuest }) => ({
     selectKidQuests: createSelector(
       selectList,
       (all): ViewMap => ({
         quests: all.map(quest => ({ ...quest, word: getWord(quest) })),
       })
+    ),
+    selectTaskQuest: createSelector(selectActiveQuest, (active): ViewTaskQuest | null =>
+      active ? { ...active, syllables: active.correctSyllables } : null
     ),
   }),
 });
