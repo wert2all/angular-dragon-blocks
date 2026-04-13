@@ -2,7 +2,7 @@
   @if (showingSyllables().length > 0) {
     <div
       class="inline-flex flex-wrap justify-center gap-3 rounded-lg border-2 border-dashed border-vibrant-orange p-10">
-      @for (item of showingSyllables(); track item.syllable) {
+      @for (item of showingSyllables(); track $index) {
         <app-lego-brick
           [value]="item.syllable"
           [colorClass]="item.color"

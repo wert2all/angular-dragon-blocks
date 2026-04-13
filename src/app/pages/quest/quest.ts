@@ -36,12 +36,12 @@ export class Quest {
   }
 
   protected setDone(item: ViewSyllable): void {
-    this.store.dispatch(QuestActions.setDoneSyllable({ syllable: item.syllable }));
+    this.store.dispatch(QuestActions.setDoneSyllable({ id: item.id }));
 
     // Check if this was the last syllable
     const quest = this.activeQuest();
     if (quest) {
-      const remainingSyllables = quest.correctSyllables.filter(s => !s.isDone && s.syllable !== item.syllable);
+      const remainingSyllables = quest.correctSyllables.filter(s => !s.isDone && s.id !== item.id);
       if (remainingSyllables.length === 0) {
         this.store.dispatch(QuestActions.completeQuest({ questId: quest.id }));
         this.showCongrats.set(true);

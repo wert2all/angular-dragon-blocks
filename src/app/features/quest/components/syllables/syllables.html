@@ -1,5 +1,5 @@
 <div class="flex flex-wrap justify-center">
-  @for (syllable of syllables(); track syllable.syllable) {
+  @for (syllable of syllables(); track $index) {
     @if (syllable.isDone) {
       <app-lego-brick [value]="syllable.syllable" [colorClass]="syllable.color" />
     } @else {
