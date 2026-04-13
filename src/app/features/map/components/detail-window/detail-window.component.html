@@ -1,22 +1,19 @@
-@if (quest()) {
-  <div
-    class="quest-detail-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-    (click)="closeChange.emit()"
-    (keydown.escape)="closeChange.emit()"
-    tabindex="-1"
-    role="dialog"
-    aria-modal="true"
-    [attr.aria-label]="'Quest details for ' + quest()?.word">
-    <div class="quest-detail-container relative">
-      <button
-        (click)="closeChange.emit()"
-        (keydown.enter)="closeChange.emit()"
-        type="button"
-        aria-label="Close quest details"
-        class="absolute top-2 right-2 flex h-6 w-6 items-center justify-center rounded-full bg-vibrant-orange text-sm text-white transition-colors duration-200 hover:bg-orange-600">
-        ✕
-      </button>
-      <app-quest-details [quest]="quest()" [isSmall]="true" />
-    </div>
+<div
+  class="quest-detail-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+  (click)="closeWindow.emit()"
+  (keydown.escape)="closeWindow.emit()"
+  tabindex="-1"
+  role="dialog"
+  aria-modal="true">
+  <div class="quest-detail-container relative">
+    <button
+      (click)="closeWindow.emit()"
+      (keydown.enter)="closeWindow.emit()"
+      type="button"
+      aria-label="Close"
+      class="absolute top-2 right-2 flex h-6 w-6 items-center justify-center rounded-full bg-vibrant-orange text-sm text-white transition-colors duration-200 hover:bg-orange-600">
+      ✕
+    </button>
+    <ng-content></ng-content>
   </div>
-}
+</div>

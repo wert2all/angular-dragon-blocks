@@ -4,12 +4,13 @@ import { questFeature } from '../../features/quest/store/quest.feature';
 import { ViewQuestMarker } from '../../features/quest/store/quest.types';
 import { QuestMarkerComponent } from '../../features/map/components/marker/marker.component';
 import { MapDetailWindowComponent } from '../../features/map/components/detail-window/detail-window.component';
+import { QuestDetails } from '../../features/quest/components/details/details';
 
 @Component({
   selector: 'app-map-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './map-page.component.html',
-  imports: [QuestMarkerComponent, MapDetailWindowComponent],
+  imports: [QuestMarkerComponent, MapDetailWindowComponent, QuestDetails],
 })
 export class MapPageComponent {
   private store = inject(Store);
