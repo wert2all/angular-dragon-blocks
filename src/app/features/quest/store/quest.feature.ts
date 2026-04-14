@@ -1,7 +1,7 @@
 import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { QuestActions } from './quest.actions';
 import { quests } from './quest.store';
-import { Quest, QuestState, ViewMap, ViewSyllable, ViewTaskQuest } from './quest.types';
+import { Quest, QuestState, ViewMap, ViewSyllable, ViewTaskQuest, ProgressEntry } from './quest.types';
 import { BrickColor } from '../../../layout/lego/lego-brick/lego-brick';
 
 function getWord(quest: Quest): string {
@@ -112,13 +112,26 @@ export const questFeature = createFeature({
           isDone: quest.id === questId ? true : quest.isDone,
         })),
       })
-    )
+    ),
+    on(QuestActions.hydrateQuestProgress, (state, { progresses }: { progresses: ProgressEntry[] }): QuestState => {
+      const progressMap = new Map<number, boolean>(progresses.map(p => [p.questId, p.isDone]));
+      return {
+        ...state,
+        list: state.list.map(quest => ({
+          ...quest,
+          isDone: progressMap.has(quest.id) ? progressMap.get(quest.id)! : quest.isDone,
+        })),
+      };
+    })
   ),
   extraSelectors: ({ selectList, selectActiveQuest }) => ({
     selectKidQuests: createSelector(
       selectList,
       (all): ViewMap => ({
-        quests: all.map(quest => ({ ...quest, word: getWord(quest) })),
+        quests: all.map(quest => ({
+          ...quest,
+          word: getWord(quest),
+        })),
       })
     ),
     selectTaskQuest: createSelector(selectActiveQuest, (active): ViewTaskQuest | null =>
