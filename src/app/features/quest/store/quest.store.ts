@@ -1,43 +1,31 @@
-import { Quest } from './quest.types';
-
-export const quests: Quest[] = [
+export const quests = [
   {
-    id: 1,
     image: '/assets/quests/quest-1.png',
     syllables: ['ма', 'му', 'ля'],
-    isDone: false,
     position: { x: 10, y: 85 },
     fakeSyllables: 1,
   },
   {
-    id: 2,
     image: '/assets/quests/quest-2.png',
     syllables: ['та', 'то'],
-    isDone: false,
     position: { x: 17, y: 78 },
     fakeSyllables: 1,
   },
   {
-    id: 3,
     image: '/assets/quests/quest-3.png',
     syllables: ['да', 'вид'],
-    isDone: false,
     position: { x: 23, y: 70 },
     fakeSyllables: 1,
   },
   {
-    id: 4,
     image: '/assets/quests/quest-4.png',
     syllables: ['си', 'рок'],
-    isDone: false,
     position: { x: 26, y: 67 },
     fakeSyllables: 1,
   },
   {
-    id: 5,
     image: '/assets/quests/quest-5.png',
     syllables: ['ко', 'ро', 'на'],
-    isDone: false,
     position: { x: 22, y: 60 },
     fakeSyllables: 2,
   },
@@ -50,18 +38,14 @@ export const quests: Quest[] = [
     fakeSyllables: 2,
   },
   {
-    id: 7,
     image: '/assets/quests/quest-7.png',
     syllables: ['джо', 'нік'],
-    isDone: false,
     position: { x: 30, y: 50 },
     fakeSyllables: 2,
   },
   {
-    id: 8,
     image: '/assets/quests/quest-8.png',
     syllables: ['цу', 'це', 'ня'],
-    isDone: false,
     position: { x: 30, y: 42 },
     fakeSyllables: 2,
   },
