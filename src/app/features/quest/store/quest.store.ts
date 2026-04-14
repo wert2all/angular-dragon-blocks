@@ -49,4 +49,16 @@ export const quests = [
     position: { x: 30, y: 42 },
     fakeSyllables: 2,
   },
+  {
+    image: '/assets/quests/quest-9.png',
+    syllables: ['ба', 'бу', 'ся'],
+    position: { x: 32, y: 35 },
+    fakeSyllables: 2,
+  },
+  {
+    image: '/assets/quests/quest-10.png',
+    syllables: ['зуб', 'ки'],
+    position: { x: 31, y: 28 },
+    fakeSyllables: 2,
+  },
 ];
