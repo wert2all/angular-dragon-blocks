@@ -11,20 +11,34 @@ This project is an educational game application built with Angular called "Drago
 
 ## Development Workflow
 
+### 1. Implementation
+
 - Use `ng generate` to create new components, services, and modules
-- Run tests using `ng test`
-- Use `ng lint` for code quality checks
 - Follow Angular's component-based architecture patterns
+- Apply TypeScript best practices and Tailwind CSS styling
 
-## Post-Implementation Tasks
+### 2. Testing
 
-After completing any implementation task, ALWAYS run the following commands before finishing:
+- Run unit tests: `ng test`
+- Verify all tests pass before proceeding
+
+### 3. Code Quality
+
+- Run linting: `ng lint`
+- Fix any linting errors or warnings
+
+### 4. Formatting
 
 - Format code: `pnpm exec prettier --write .`
-- Lint code: `pnpm ng lint`
-- Fix auto-fixable lint issues: `pnpm ng lint --fix`
 
-Ensure all formatting and linting checks pass before considering the task complete.
+### 5. Build Verification
+
+- Verify production build succeeds: `ng build`
+- Ensure no build errors or warnings
+
+## Post-Implementation Verification
+
+Before considering any task complete, ensure all formatting, linting, and build verification steps above have been executed successfully.
 
 ## TypeScript Best Practices
 
