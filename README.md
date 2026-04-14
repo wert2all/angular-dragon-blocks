@@ -4,7 +4,13 @@
 
 ## Overview
 
-**Dragon Blocks: Reading Adventures** is an educational game built with Angular that helps children learn to read by manipulating whole syllable-blocks to build objects for the friendly dragon, **Toothless**. The child drags blocks, each containing a pre-written syllable, onto a Lego-style baseplate to form words. As blocks snap together, Toothless provides audio feedback, encouraging learning through interactive play.
+**Dragon Blocks: Reading Adventures** is an educational game built with Angular that helps children learn to read by manipulating whole syllable-blocks to build objects for the friendly dragon, **Toothless**.
+
+The child drags blocks, each containing a pre-written syllable, onto a Lego-style baseplate to form words. As blocks snap together, Toothless provides audio feedback, encouraging learning through interactive play.
+
+## Live Demo
+
+Try the game online: [**dragon-blocks.web.app**](https://dragon-blocks.web.app/)
 
 ## Game Mechanics
 
