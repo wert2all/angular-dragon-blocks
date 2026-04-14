@@ -4,7 +4,7 @@ export const quests: Quest[] = [
   {
     id: 1,
     image: '/assets/quests/quest-1.png',
-    syllables: ['ма', 'ма'],
+    syllables: ['ма', 'му', 'ля'],
     isDone: false,
     position: { x: 10, y: 85 },
     fakeSyllables: 1,
@@ -28,7 +28,7 @@ export const quests: Quest[] = [
   {
     id: 4,
     image: '/assets/quests/quest-4.png',
-    syllables: ['сир'],
+    syllables: ['си', 'рок'],
     isDone: false,
     position: { x: 26, y: 67 },
     fakeSyllables: 1,
@@ -47,6 +47,22 @@ export const quests: Quest[] = [
     syllables: ['ба', 'ра', 'бан'],
     isDone: false,
     position: { x: 25, y: 52 },
+    fakeSyllables: 2,
+  },
+  {
+    id: 7,
+    image: '/assets/quests/quest-7.png',
+    syllables: ['джо', 'нік'],
+    isDone: false,
+    position: { x: 30, y: 50 },
+    fakeSyllables: 2,
+  },
+  {
+    id: 8,
+    image: '/assets/quests/quest-8.png',
+    syllables: ['цу', 'це', 'ня'],
+    isDone: false,
+    position: { x: 30, y: 42 },
     fakeSyllables: 2,
   },
 ];
