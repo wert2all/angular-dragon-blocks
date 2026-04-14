@@ -65,7 +65,11 @@ const makeSyllablesForQuest = (quest: Quest): ViewSyllable[] => {
 };
 
 const initState: QuestState = {
-  list: quests,
+  list: quests.map((quest, index) => ({
+    ...quest,
+    id: index,
+    isDone: false,
+  })),
   activeQuest: null,
 };
 
