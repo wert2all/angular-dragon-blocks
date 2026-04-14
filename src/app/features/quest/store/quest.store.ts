@@ -61,4 +61,34 @@ export const quests = [
     position: { x: 31, y: 28 },
     fakeSyllables: 2,
   },
+  {
+    image: '/assets/quests/quest-11.png',
+    syllables: ['вік', 'но'],
+    position: { x: 26, y: 23 },
+    fakeSyllables: 3,
+  },
+  {
+    image: '/assets/quests/quest-12.png',
+    syllables: ['мо', 'ре'],
+    position: { x: 22, y: 20 },
+    fakeSyllables: 3,
+  },
+  {
+    image: '/assets/quests/quest-13.png',
+    syllables: ['олі', 'вець'],
+    position: { x: 17, y: 14 },
+    fakeSyllables: 1,
+  },
+  {
+    image: '/assets/quests/quest-14.png',
+    syllables: ['де', 'ре', 'во'],
+    position: { x: 12, y: 15 },
+    fakeSyllables: 2,
+  },
+  {
+    image: '/assets/quests/quest-15.png',
+    syllables: ['ку', 'роч', 'ка'],
+    position: { x: 13, y: 23 },
+    fakeSyllables: 2,
+  },
 ];
