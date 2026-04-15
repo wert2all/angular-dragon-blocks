@@ -91,4 +91,22 @@ export const quests = [
     position: { x: 13, y: 23 },
     fakeSyllables: 2,
   },
+  {
+    image: '/assets/quests/quest-16.png',
+    syllables: ['ко', 'ра', 'бель'],
+    position: { x: 15, y: 32 },
+    fakeSyllables: 3,
+  },
+  {
+    image: '/assets/quests/quest-17.png',
+    syllables: ['чаш', 'ка'],
+    position: { x: 8, y: 28 },
+    fakeSyllables: 3,
+  },
+  {
+    image: '/assets/quests/quest-18.png',
+    syllables: ['ко', 'йот'],
+    position: { x: 38, y: 33 },
+    fakeSyllables: 3,
+  },
 ];
