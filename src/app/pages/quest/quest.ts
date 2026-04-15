@@ -6,12 +6,12 @@ import { QuestActions } from '../../features/quest/store/quest.actions';
 import { questFeature } from '../../features/quest/store/quest.feature';
 import { Syllables } from '../../features/syllables/syllables';
 import { ViewSyllable } from '../../features/quest/store/quest.types';
-import { CongratsModalComponent } from '../../features/celebration/congrats-modal/congrats-modal';
+import { SaluteAnimationComponent } from '../../features/celebration/salute-animation';
 
 @Component({
   selector: 'app-quest',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Syllables, TaskComponent, CongratsModalComponent],
+  imports: [Syllables, TaskComponent, SaluteAnimationComponent],
   templateUrl: './quest.html',
 })
 export class QuestPage {
@@ -84,5 +84,9 @@ export class QuestPage {
 
   protected onContinueToMap(): void {
     this.router.navigate(['/map']);
+  }
+
+  protected onAnimationComplete() {
+    //todo
   }
 }

@@ -10,6 +10,7 @@ export class QuestDetails {
   private router = inject(Router);
   readonly quest = input.required<ViewQuestMarker | null>();
   readonly isSmall = input(false);
+  readonly showWord = input(true);
   readonly noClick = input(false);
 
   onWordClick() {
