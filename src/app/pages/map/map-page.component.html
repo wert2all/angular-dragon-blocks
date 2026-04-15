@@ -5,8 +5,8 @@
     (keydown.enter)="onMapClick()"
     tabindex="0"
     role="region"
-    aria-label="Quest map">
-    <img src="/gemini_generated_map.png" alt="Dragon's World Map" class="rounded-lg shadow-lg" />
+    aria-label="Карта квестів">
+    <img src="/gemini_generated_map.png" alt="Карта світу драконів" class="rounded-lg shadow-lg" />
     @for (quest of quests().quests; track quest.id) {
       <app-quest-marker [quest]="quest" (markerClick)="onMarkerClick($event)" />
     }
