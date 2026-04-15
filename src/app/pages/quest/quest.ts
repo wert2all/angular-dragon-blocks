@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TaskComponent } from '../../features/quest/components/task/task';
@@ -22,7 +22,6 @@ export class QuestPage {
   protected readonly activeQuest = this.store.selectSignal(questFeature.selectActiveQuest);
   protected readonly activeTaskQuest = this.store.selectSignal(questFeature.selectTaskQuest);
   protected readonly allQuests = this.store.selectSignal(questFeature.selectList);
-  protected readonly showCongrats = signal(false);
 
   protected readonly navigation = computed(() => {
     const quests = this.allQuests();
@@ -68,13 +67,8 @@ export class QuestPage {
       const remainingSyllables = quest.correctSyllables.filter(s => !s.isDone && s.id !== item.id);
       if (remainingSyllables.length === 0) {
         this.store.dispatch(QuestActions.completeQuest({ questId: quest.id }));
-        this.showCongrats.set(true);
       }
     }
-  }
-
-  protected onCloseCongrats(): void {
-    this.showCongrats.set(false);
   }
 
   protected navigateToQuest(questId: number): void {
@@ -86,7 +80,7 @@ export class QuestPage {
     this.router.navigate(['/map']);
   }
 
-  protected onAnimationComplete() {
-    //todo
+  protected onAnimationComplete(): void {
+    // Animation completed - can log analytics here if needed
   }
 }
