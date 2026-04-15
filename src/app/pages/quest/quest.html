@@ -69,6 +69,6 @@
   }
 </div>
 
-@if (showCongrats()) {
+@if (isQuestComplete()) {
   <app-salute-animation (animationComplete)="onAnimationComplete()" />
 }
