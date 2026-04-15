@@ -69,4 +69,6 @@
   }
 </div>
 
-<app-congrats-modal [isOpen]="showCongrats()" (closeModal)="onCloseCongrats()" (continue)="onContinueToMap()" />
+@if (showCongrats()) {
+  <app-salute-animation (animationComplete)="onAnimationComplete()" />
+}
